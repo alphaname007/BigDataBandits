@@ -5,14 +5,17 @@ from sklearn.linear_model import LinearRegression
 
 def get_trade_day_avg(date, stock):
     trade_day = stock.loc[stock['date'] == str(date.strftime('%Y-%m-%d'))]
+
+    if trade_day.empty:
+        return None
     
-    print(trade_day)
+    else:
 
-    trade_day_open = trade_day.open.item()
-    trade_day_close = trade_day.close.item()
-    trade_day_avg = (trade_day_open + trade_day_close) / 2
+        trade_day_open = trade_day.open.item()
+        trade_day_close = trade_day.close.item()
+        trade_day_avg = (trade_day_open + trade_day_close) / 2
 
-    return trade_day_avg
+        return trade_day_avg
 
 
 def get_dates(date, interval_length:int=5):
@@ -26,13 +29,17 @@ def get_dates(date, interval_length:int=5):
 
 
 def get_trend(date, stock, interval_length:int=5):
-    dates:list = get_dates(date, interval_length)
+    dates:list = get_dates(date, interval_length) 
     avgs:list = []
 
     for date_i in dates:
-        avgs.append(get_trade_day_avg(date_i, stock))
+        avg = get_trade_day_avg(date_i, stock)
+        if avg == None:
+            return None
+        else:
+            avgs.append(avg)
     
-    x = np.array([dates]).reshape((-1, 1))
+    x = np.array(list(range(0, interval_length))).reshape((-1, 1))
     y = np.array(avgs)
 
     model = LinearRegression()
