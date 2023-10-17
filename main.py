@@ -10,32 +10,38 @@ Posts:pd.DataFrame = pd.read_csv('./datasets/elonmusk.csv')
 Tesla:pd.DataFrame = pd.read_csv('./datasets/tesla.csv')
 Dogecoin:pd.DataFrame = pd.read_csv('./datasets/dogecoin.csv')
 
-filter_list = []
+filter_list = []#"dogecoin", "Doge"]
+
+def get_runtime(runtime_start:time=runtime_start):
+    return round(time.time() - runtime_start, 4)
 
 
-influences:pd.DataFrame = pd.DataFrame(columns=['i', 'date', 'text', "trend"])
+influences:pd.DataFrame = pd.DataFrame(columns=['date', 'text', 'trend'])
 
 for i, Post in Posts.iterrows():
-    if not check_filter(str(Post["text"]), filter_list, hit=False):
-        print(f"{time.time()-runtime_start} PASS")
+    if not check_filter(str(Post['text']), filter_list, hit=False):
+        print(f'{get_runtime()} PASS')
         continue
     else:
         #Convert Datetime-string, to Date-object
-        date_time = datetime.datetime.strptime(str(Post["datetime"])[0:18], '%Y-%m-%d %H:%M:%S')
+        date_time = datetime.datetime.strptime(str(Post['datetime'])[0:18], '%Y-%m-%d %H:%M:%S')
         date = date_time.date()
 
         trend = get_trend(date, Dogecoin)
         if trend == None:
-            print(f"{time.time()-runtime_start} NONE")
+            print(f'{get_runtime()} NONE')
             continue
 
         
-        influences.loc[i] = [i] + [date] + [Post['text']] + [trend]
-        print(f"{time.time()-runtime_start} HIT")
+        influences.loc[i] = [date] + [Post['text']] + [trend]
+        print(f'{get_runtime()} HIT')
 
-print(influences)
+max_influence = influences.loc[influences['trend'] == influences["trend"].max()]
+avg_influence_trend = influences.loc[:, 'trend'].mean()
 
-runtime_end = time.time()
-runtime_elapsed = runtime_end - runtime_start
+print(max_influence)
+print(avg_influence_trend)
 
-print(f"RUNTIME: {runtime_elapsed}")
+runtime_elapsed = get_runtime()
+
+print(f'RUNTIME: {runtime_elapsed}')
