@@ -4,11 +4,11 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 
-def check_filter(text:str, filter_list:list):
+def check_filter(text:str, filter_list:list, hit:bool):
     for filter in filter_list:
         if filter in text:
-            return True
-    return False
+            return hit
+    return not hit
 
 
 def get_trade_day_avg(date:datetime, stock:pd.DataFrame):
