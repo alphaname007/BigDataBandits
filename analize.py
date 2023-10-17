@@ -4,6 +4,13 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 
+def check_filter(text:str, filter_list:list):
+    for filter in filter_list:
+        if filter in text:
+            return True
+    return False
+
+
 def get_trade_day_avg(date:datetime, stock:pd.DataFrame):
     trade_day = stock.loc[stock['date'] == str(date.strftime('%Y-%m-%d'))]
 
@@ -48,6 +55,6 @@ def get_trend(date:datetime, stock:pd.DataFrame, interval_length:int=5):
     start_price = model.predict([[0]])[0]
     end_price = model.predict([[interval_length]])[0]
 
-    change_percentage = round((end_price / start_price *100), 2)
+    change_percentage = round((end_price / start_price), 4)
 
     return change_percentage
