@@ -23,7 +23,7 @@ def get_dates(date:datetime, interval_length:int=5):
     dates = []
 
     for i in range(0, interval_length):
-        date += datetime.timedelta(days=interval_length)
+        date += datetime.timedelta(days=i)
         dates.append(date)
 
     return dates
