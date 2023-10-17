@@ -1,9 +1,10 @@
 #from datetime import datetime
 import datetime
 import numpy as np
+import pandas as pd
 from sklearn.linear_model import LinearRegression
 
-def get_trade_day_avg(date, stock):
+def get_trade_day_avg(date:datetime, stock:pd.DataFrame):
     trade_day = stock.loc[stock['date'] == str(date.strftime('%Y-%m-%d'))]
 
     if trade_day.empty:
@@ -18,7 +19,7 @@ def get_trade_day_avg(date, stock):
         return trade_day_avg
 
 
-def get_dates(date, interval_length:int=5):
+def get_dates(date:datetime, interval_length:int=5):
     dates = []
 
     for i in range(0, interval_length):
@@ -28,7 +29,7 @@ def get_dates(date, interval_length:int=5):
     return dates
 
 
-def get_trend(date, stock, interval_length:int=5):
+def get_trend(date:datetime, stock:pd.DataFrame, interval_length:int=5):
     dates:list = get_dates(date, interval_length) 
     avgs:list = []
 

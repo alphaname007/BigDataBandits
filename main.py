@@ -3,9 +3,9 @@ import datetime
 
 from analize import *
 
-Posts = pd.read_csv('elonmusk.csv')
-Tesla = pd.read_csv('tesla.csv')
-Dogecoin = pd.read_csv('dogecoin.csv')
+Posts:pd.DataFrame = pd.read_csv('./datasets/elonmusk.csv')
+Tesla:pd.DataFrame = pd.read_csv('./datasets/tesla.csv')
+Dogecoin:pd.DataFrame = pd.read_csv('./datasets/dogecoin.csv')
 
 for i, Post in Posts.iterrows():
     #Convert Datetime-string, to Date-object
