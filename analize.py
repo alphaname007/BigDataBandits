@@ -1,4 +1,4 @@
-#from datetime import datetime
+import math
 import datetime
 import numpy as np
 import pandas as pd
@@ -43,7 +43,11 @@ def get_trend(date:datetime, stock:pd.DataFrame, interval_length:int=5):
     x = np.array(list(range(0, interval_length))).reshape((-1, 1))
     y = np.array(avgs)
 
-    model = LinearRegression()
-    model.fit(x, y)
+    model = LinearRegression().fit(x, y)
 
-    return model.coef_
+    start_price = model.predict([[0]])[0]
+    end_price = model.predict([[interval_length]])[0]
+
+    change_percentage = round((end_price / start_price *100), 2)
+
+    return change_percentage
