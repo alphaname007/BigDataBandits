@@ -55,8 +55,11 @@ visulize_trends(influences['trend'])
 max_influence = influences.loc[influences['trend'] == influences["trend"].max()]
 avg_influence_trend = influences.loc[:, 'trend'].mean()
 
+max_count_posts = influences.loc[influences['count_posts'] == influences["count_posts"].max()]
+
 print(max_influence)
 print(avg_influence_trend)
+print(max_count_posts)
 
 runtime_elapsed = get_runtime()
 
