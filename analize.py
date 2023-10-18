@@ -52,9 +52,9 @@ def get_trend(date:datetime, stock:pd.DataFrame, interval_length:int=5):
 
     model = LinearRegression().fit(x, y)
 
-    start_price = model.predict([[0]])[0]
-    end_price = model.predict([[interval_length]])[0]
+    start_price_model = model.predict([[0]])[0]
+    end_price_model = model.predict([[interval_length]])[0]
 
-    change_percentage = round((end_price / start_price), 4)
+    change_percentage = round((end_price_model / start_price_model), 4)
 
-    return change_percentage
+    return [change_percentage, avgs, dates, (start_price_model, end_price_model)]
