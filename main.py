@@ -7,15 +7,19 @@ from visulize import *
 
 runtime_start = time.time()
 
+#Read the CSV files and put them into pandas DataFrame objects
 Posts:pd.DataFrame = pd.read_csv('./datasets/elonmusk.csv')
 Tesla:pd.DataFrame = pd.read_csv('./datasets/tesla.csv')
 Dogecoin:pd.DataFrame = pd.read_csv('./datasets/dogecoin.csv')
 
+#List that takes the filters
 filter_list = []#"dogecoin", "Doge"]
 
+#Timer
 def get_runtime(runtime_start:time=runtime_start):
     return round(time.time() - runtime_start, 4)
 
+#Add item to list
 def append_item(list:list, item):
     list.append(item)
 
@@ -23,6 +27,7 @@ influences:pd.DataFrame = pd.DataFrame(columns=['date', 'posts', 'count_posts', 
 j = 0
 old_date = None
 
+#Go over all Posts
 for i, Post in Posts.iterrows():
     if not check_filter(str(Post['text']), filter_list, hit=False):
         print(f'{get_runtime()} PASS')
@@ -57,10 +62,13 @@ avg_influence_trend = influences.loc[:, 'trend'].mean()
 
 max_count_posts = influences.loc[influences['count_posts'] == influences["count_posts"].max()]
 
+#Output
 print(max_influence)
 print(avg_influence_trend)
 print(max_count_posts)
 
+#Call get_runtime function to get elapsed time
 runtime_elapsed = get_runtime()
 
+#Prints total time
 print(f'RUNTIME: {runtime_elapsed}')
