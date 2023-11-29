@@ -80,14 +80,14 @@ So iteriert diese Schleife zunächst über alle Posts (Tweets), die im Datensatz
 Im Anschluss wird nun durch die Methode check\_filter überprüft, ob die aktuelle Zeile den Filteransprüchen gerecht wird.
 Trifft dies nicht zu, so wird diese Zeile übersprungen.
 Ansonsten wird das Datum aus der aktuellen Zeile ausgelesen.
-Im Folgenden wird nun überprüft ob der aktuelle Tag schon im Datensatz "influence" enthalten ist, was passiert wenn an einem Tag mehrere Posts vorliegen. Trifft dies zu, so wird dieser nur um den aktuellen Posttext ergänzt, sowie die Anzahl der Posts an diesem Tag inkrementiert.
+Im Folgenden wird nun überprüft ob der aktuelle Tag schon im Datensatz ``influence'' enthalten ist, was passiert wenn an einem Tag mehrere Posts vorliegen. Trifft dies zu, so wird dieser nur um den aktuellen Posttext ergänzt, sowie die Anzahl der Posts an diesem Tag inkrementiert.
 Ist dieser Tag noch nicht im Datensatz influences enthalten, so wird für den aktuellen Tag zunächst das Intervall des Stock-Datensatzes bestimmt.
 Ist dies nicht möglich, so wird eine Warnung Ausgegeben und die Schleif fährt fort.
 (Dies ist jedoch wie in 3.3.1 beschrieben zu vernachlässigen).
 Wenn das Interval erfolgreich erstellt wurde, werden nun alle Berechnungen auf das Interval angewandt.
-Schlussendlich werden nun alle Werte unter diesem Tag in den Datensatz "influences" eingefügt.
+Schlussendlich werden nun alle Werte unter diesem Tag in den Datensatz ``influences'' eingefügt.
 Hat die Schleife nun alle Posts abgearbeitet, kann nun dieser Datensatz zurückgegeben werden.
-Zudem wird nun noch der prozentuale Anteil der im "influence" enthaltenen Posts von allen Posts ermittelt und zurück gegeben werden.
+Zudem wird nun noch der prozentuale Anteil der im ``influence'' enthaltenen Posts von allen Posts ermittelt und zurück gegeben werden.
 \begin{python}
 def get_influence(stock:pd.DataFrame, posts:pd.DataFrame=Posts, filter_list:list=[], hit:bool=False,):
     # find a common start date
