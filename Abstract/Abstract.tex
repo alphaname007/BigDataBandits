@@ -77,7 +77,7 @@ Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Spe
 Die Hauptfunktion umfasst die grundlegende Schleife zur Auswertung der Datensätze in Bezug auf die Fragestellung.
 Dafür wird ein neuer Datensatz "influence" erstellt, der für jeden Tag, an dem ein Post mit den entsprechenden Filterkriterien verfasst wurde, das Datum, eine Liste aller Posts, die Anzahl dieser Posts sowie den prozentualen Unterschied der dafür vorgesehenen Hilfsfunktionen enthält.
 So iteriert diese Schleife zunächst über alle Posts (Tweets), die im Datensatz Posts enthalten sind.
-Im Anschluss wird nun durch die Methode *check_filter* überprüft, ob die aktuelle Zeile den Filteransprüchen gerecht wird.
+Im Anschluss wird nun durch die Methode check\_filter überprüft, ob die aktuelle Zeile den Filteransprüchen gerecht wird.
 Trifft dies nicht zu, so wird diese Zeile übersprungen.
 Ansonsten wird das Datum aus der aktuellen Zeile ausgelesen.
 Im Folgenden wird nun überprüft ob der aktuelle Tag schon im Datensatz "influence" enthalten ist, was passiert wenn an einem Tag mehrere Posts vorliegen. Trifft dies zu, so wird dieser nur um den aktuellen Posttext ergänzt, sowie die Anzahl der Posts an diesem Tag inkrementiert.
@@ -140,7 +140,7 @@ Dieses Diagramm zeigt die Verteilung der entsprechenden Schlüsselwörter in all
 Dabei ist es wichtig zu beachten, dass der zu betrachtende Zeitraum zusammen mit den Aufzeichnungen des Kursverlaufs beginnt.
 Demzufolge wird beispielsweise die Verteilung der Schlüsselwörter für Dogecoin nur für den Zeitraum des Dogecoin-Datensatzes erstellt.
 Interesant ist hierbei insbesondere die Tatsache das Elon Musk fast doppelt so viel über Tesla ``twittert'' als über Dogecoin.
-Insbesondere wenn man sich die kombinierten Schlüsselwörter über den Zeitraum des Dogecoin-Datensatzes (da Dogecoin-Datensatz \< Tesla-Datensatz) (3. Pie-Chart) näher anschaut, ist deutlich zu erkennen, das selbst hier Tesla einen Anteil von 28.8\% besitzt (da 41.1\%-12.3\%).
+Insbesondere wenn man sich die kombinierten Schlüsselwörter über den Zeitraum des Dogecoin-Datensatzes (da Dogecoin-Datensatz \textless Tesla-Datensatz) (3. Pie-Chart) näher anschaut, ist deutlich zu erkennen, das selbst hier Tesla einen Anteil von 28.8\% besitzt (da 41.1\%-12.3\%).
 Dies ist immer noch mehr als doppelt so viel als die 12.3\% der Dogecoin-Posts.
 Dies könnte daran liegen, dass Dogecoin von Elon Musk mehr als eine Art Neben- oder Spaßprojekt angesehen wird; seine Verbundenheit zu Tesla ist wohl auch schon alleine durch seine Position (CEO) gegeben.
 
