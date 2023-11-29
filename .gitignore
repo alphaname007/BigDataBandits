@@ -154,6 +154,9 @@ cython_debug/
 
 # LaTeX generated files
 *.aux
+*.toc
+*.fls
+*.fdb_latexmk
 *.log
 *.out
 *.synctex.gz
