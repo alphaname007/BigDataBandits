@@ -1,0 +1,25 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {section}{\numberline {1}Einleitung}{1}{section.1}%
+\contentsline {section}{\numberline {2}Fragestellung}{2}{section.2}%
+\contentsline {section}{\numberline {3}Datensätze}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Dataunderstanding}{2}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Datendichte}{2}{subsubsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.2}Datapreperation}{2}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Lösungsansatz}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Hilfsfunktionen}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Hauptschleife}{3}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Erzeugung}{3}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Auswertung}{4}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Posts}{4}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Verteilung}{4}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Verlauf}{4}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Zusammenhänge}{5}{subsubsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.2}Trend}{6}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Verlauf}{6}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Durchschnitt}{6}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.3}Absolute}{7}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Verlauf}{7}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Durchschnitt}{7}{subsubsection.5.3.2}%
+\contentsline {section}{\numberline {6}Gesamtbewertung / Erwartung}{7}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Die Legalität}{7}{subsection.6.1}%
+\contentsline {section}{\numberline {7}Fazit}{8}{section.7}%
