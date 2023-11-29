@@ -152,6 +152,28 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# LaTeX generated files
+*.aux
+*.log
+*.out
+*.synctex.gz
+
+# LaTeX project output
+#*.pdf
+
+# Ignore the auto-generated folder for TeXShop
+*.tmbackup
+
+# Ignore the build directory
+_build/
+
+# Ignore the output directory
+_output/
+
+# Ignore the temporary files directory
+_tmp/
+
+
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
