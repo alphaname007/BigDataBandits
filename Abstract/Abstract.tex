@@ -54,7 +54,7 @@ Alle Datensätze vermitteln einen seriösen und schlüssigen Eindruck, was unter
 Zudem wurde der Tesla-Datensatz an den Aktiensplit angepasst und unter Verwendung der offiziellen Yahoo Finance API erstellt.
 Für die Auswertung werden insbesondere die Zeilen ``date'' und ``raw\_close'' der Stock-Datensätze, sowie die Spalten ``datetime'' und ``text'' des Post-Datensatzes betrachtet.
 
-\subsection{Dataunderstanding}
+\subsection{Data Understanding}
 \subsubsection{Datendichte}
 \begin{figure}[!htb]
   	\includegraphics[width=.7\textwidth, height=100px]{../imgs/Dichte1.png}
@@ -62,7 +62,7 @@ Für die Auswertung werden insbesondere die Zeilen ``date'' und ``raw\_close'' d
  	\caption{Datendichte}
  	\label{fig:Datendichte}
 \end{figure}
-Die erste Grafik zeigt die gesamte Zeitspanne (04.06.2010 - 12.10.2023) aller gesammelter Daten der drei Datensätze. Dabei beschreibt der rote Anteil alle fehlenden Tage des jeweiligen Datensatzes. Die Regelmäßigkeit der fehlenden Daten im Tesla-Datensatz kann auf die geschlossenen Tage der Aktienbörse zurückgeführt werden; dem zu folge, weist der Dogecoin-Datensatz auch keine fehlenden Datensätze auf, da Kryptomärkte keiner Schließzeit unterliegen.
+Die erste Grafik zeigt die gesamte Zeitspanne (04.06.2010 - 12.10.2023) aller gesammelter Daten der drei Datensätze. Dabei beschreibt der rote Anteil alle fehlenden Tage des jeweiligen Datensatzes. Die Regelmäßigkeit der fehlenden Daten im Tesla-Datensatz kann auf die geschlossenen Tage der Aktienbörse zurückgeführt werden; demzufolge, weist der Dogecoin-Datensatz auch keine fehlenden Datensätze auf, da Kryptomärkte keiner Schließzeit unterliegen.
 Die prozentuale Anzahl der fehlenden Tage kann der zweiten Grafik entnommen werden. Darüber hinaus lässt sich aus dem Schaubild die Aussage ableiten, dass das Korrespondenzverhalten von Elon Musk auf der Plattform X über die Zeit zunimmt. Zusammen mit der eineinhalbjährigen Pause nach seinem ersten Tweet am 04.06.2010 lässt dies die Vermutung offen, dass Musk erst nach und nach das Potenzial der Plattform erkannte, bis er diese schließlich am 04.04.2022 unter fragwürdigen Umständen aufkaufte. 
 Die Auswertung der fehlenden Tage wird durch die Methode \textit{get\_density(df:pd.DataFrame)} ermöglicht, welche zunächst eine Liste aller Tage erstellt, die im jeweiligen Datensatz vorhanden sein sollten. Im Folgenden wird ein neuer Datensatz erstellt, der alle Tage, sowie den entsprechenden booleschen Wert (1 vorhanden / 0 fehlend) für jeden Tag des zu untersuchenden Datensatzes enthält. Dieser resultierende Datensatz kann nun einfach mit einem Eventplot skizziert werden und bietet die einfache Möglichkeit, den Prozentsatz der fehlenden Tage zu ermitteln.
 \begin{python}
@@ -74,7 +74,7 @@ def get_density(df:pd.DataFrame):
     return all_dates
 \end{python}
 
-\subsection{Datapreperation}
+\subsection{Data Preperation}
 Da die Datensätze schon sehr gut strukturiert sind, ist es nicht nötig eine erweiterte Datapreperation durchzuführen.
 Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Speichergröße zu verbessern, jedoch ist beides unerheblich und würde die Weiterentwicklung erheblich einschränken.
 
