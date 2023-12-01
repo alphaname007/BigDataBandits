@@ -13,6 +13,7 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{dirtytalk}
 
 \usepackage[ngerman]{babel}
 \usepackage{pythonhighlight}
@@ -32,9 +33,9 @@
 \newpage
 
 \section{Einleitung}
-Da gerade das digitale Zeitalter geprägt von dem Einfluss großer Social-Media Plattformen ist, haben die Big Data Bandits beschlossen diese Extremen genauer zu betrachten.
-Unter dem Aspekt, dass Elon Musk wohl zu den populärsten, einflussreichsten und dominantesten Personen des öffentlichen Lebens zählt, nominiert ihn insbesondere sein ``besonderes'' Korrespondenzverhalten gepaart mit seinen wirtschaftlichen Interessen für eine genauere Untersuchung.
-Im folgenden Abstract findet eine Beantwortung und Beurteilung der Fragestellung im Ramen der gestellten Aufgabe statt.
+Da gerade das digitale Zeitalter geprägt von dem Einfluss großer Social Media Plattformen ist, haben die Big Data Bandits beschlossen diese Extremen genauer zu betrachten.
+Unter dem Aspekt, dass Elon Musk wohl zu den populärsten, einflussreichsten und dominantesten Personen des öffentlichen Lebens zählt, nominiert ihn insbesondere sein ``einzigartiges'' Korrespondenzverhalten gepaart mit seinen wirtschaftlichen Interessen für eine genauere Untersuchung.
+Im folgenden Abstract findet eine Beantwortung und Beurteilung der Fragestellung im Rahmen der gestellten Aufgabe statt.
 Dafür analysieren wir die entsprechenden Datensätze mit einem für die Aufgabe entworfenem Python Script.
 Dieses kann, aufgrund seiner hohen Modularität, auch in der Zukunft zur Beantwortung ähnlicher Fragestellungen verwendet werden.
 Weitere Details bezüglich des Codes können der \href{https://github.com/alphaname007/BigDataBandits/blob/17e158a26d8d1cc538102ff44e4171b609965e95/code\_main.ipynb}{code\_main.ipynb} entnommen werden.
@@ -45,7 +46,7 @@ Weitere Details bezüglich des Codes können der \href{https://github.com/alphan
 Die Fragestellung: ``Inwieweit nimmt Elon Musk durch sein Verhalten auf der Social Media Plattform X (ehem. Twitter) Einfluss auf den Kursverlauf von Tesla und Dogecoin?'' wurde in mehreren Iterationsschritten optimiert. 
 Dies ist insbesondere dem Zeitraum geschuldet, in welchem die Auswertung abgeschlossen sein musste.
 Somit war es uns zwar nicht möglich, eine allgemeinere Fragestellung über den allgemeinen Einfluss von Privatpersonen auf den Aktienmarkt unter der Berücksichtigung verschiedener Personen zu beantworten.
-Jedoch konnten wir nun zusätzliche Legalitätsapekte, sowie konkrete Empfehlungen für ein profitables Investieren als Privatperson mit in unsere Ausarbeitung nehmen.
+Jedoch konnten wir nun zusätzliche Legalitätsaspekte, sowie konkrete Empfehlungen für ein profitables Investieren als Privatperson mit in unsere Ausarbeitung nehmen.
 
 
 
@@ -73,7 +74,6 @@ demzufolge, weist der Dogecoin-Datensatz auch keine fehlenden Datensätze auf, d
 Die prozentuale Anzahl der fehlenden Tage kann der zweiten Grafik entnommen werden.
 Darüber hinaus lässt sich aus dem Schaubild die Aussage ableiten, dass das Korrespondenzverhalten von Elon Musk auf der Plattform X über die Zeit zunimmt.
 Zusammen mit der eineinhalbjährigen Pause nach seinem ersten Tweet am 04.06.2010 lässt dies die Vermutung offen, dass Musk erst nach und nach das Potenzial der Plattform erkannte, bis er diese schließlich am 04.04.2022 unter fragwürdigen Umständen aufkaufte. 
-
 Die Auswertung der fehlenden Tage wird durch die Methode \textit{get\_density(df:pd.DataFrame)} ermöglicht, welche zunächst eine Liste aller Tage erstellt, die im jeweiligen Datensatz vorhanden sein sollten.
 Im Folgenden wird ein neuer Datensatz erstellt, der alle Tage, sowie den entsprechenden booleschen Wert (1 vorhanden / 0 fehlend) für jeden Tag des zu untersuchenden Datensatzes enthält.
 Dieser resultierende Datensatz kann nun einfach mit einem Eventplot skizziert werden und bietet die einfache Möglichkeit, den Prozentsatz der fehlenden Tage zu ermitteln.
@@ -86,6 +86,7 @@ def get_density(df:pd.DataFrame):
     return all_dates
 \end{python}
 
+
 \subsection{Data Preperation}
 Da die Datensätze schon sehr gut strukturiert sind, ist es nicht nötig eine erweiterte Data Preperation durchzuführen.
 Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Speichergröße zu verbessern, jedoch ist beides unerheblich und würde die Weiterentwicklung erheblich einschränken.
@@ -93,39 +94,32 @@ Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Spe
 
 
 \section{Lösungsansatz}
+
+
 \subsection{Hilfsfunktionen}
 
 \subsubsection{Intervalselection}
 Die Methode \textit{check\_filter()} erkennt, ob in einem Text gewisse Schlüsselwörter aus einer Filter-Liste enthalten sind.
-Dies ermöglicht das Filtern der Posts anhand der evtl. im Post (Tweet) enthaltenen Schlüsselwörter (bsp.: ``Dogecoin'').
+Dies ermöglicht das Filtern der Posts anhand der evtl. im Post (Tweet) enthaltenen Schlüsselwörter (bspw.: ``Dogecoin'').
 Dabei kann in Abhängigkeit der Variable \textit{hit}, entweder nach dem vorhandenen sein (hit=True) oder dem Fehlen (hit=Flase) der Schlüsselwörter sortiert werden.
 Die Methode \textit{get\_interval} generiert einen Datensatz-Ausschnitt, der ausgehend von einem Startdatum die nächsten vorhandenen n Tage aus einem Stock-Datensatz enthält.
-Die Anzahl der Tage wird durch den Parameter \textit{interval\_length} gegeben und beträgt standardmäßig dem Wert 5 (eine Arbeitswoche).
+Die Anzahl der Tage wird durch den Parameter \textit{interval\_length} gegeben und beträgt standardmäßig den Wert 5 (eine Arbeitswoche).
 Es wird außerdem berücksichtigt, dass das Startdatum nicht im Stock-Datensatz enthalten ist.
 In diesem Fall nimmt das Unterprogramm das nächste vorhandene Datum.
 Ausgehend von dem gefundenen Datum, werden der Start-Index sowie der End-Index des Datensatz-Ausschnittes berechnet.
 
 \subsubsection{Kursverlauf}
-Dise Hilfsmethoden werden dazu verwendet, die Änderrung des Aktienkurses im gegeben Zeitraum zu ermöglichen.
-Dafür betrachten wir die Spalte ``close'', die dem täglichen Abschlusswert der Aktie entspricht
-So berechnet die Methode \textit{get\_absolute} den prozentualen Unterschied zwischen dem ersten sowie letzten Tag des Intervals.
-Dies erfolgt durch die Formel day\_0 / day\_n * 100, dabei entspricht day\_0 dem ersten Tag und day\_n dem letzten Tag des Intervalls:
 
-Die nachfolgende Methode \textit{get\_trend()} ist ein wichtiges Kernstück der Analyse.
-Diese Funktion ermittelt mit Hilfe einer linearen Regression eine Gerade, welche das Wachstum einer Aktie für einem gegebenen Zeitraum repräsentiert.
-Anschliesend wird mit hilfe des Modells der erwartete Wert der Aktie für den ersten bzw. letzten Tag des zu betrachtenden Intervals berechnet.
-Mit diesen beiden abgeleiteten Werten kann nun wie in der Methode \textit{get\_absolute()} beschrieben der prozentualen Unterschied kalkuliert werden.
-Dieses Verfahren hat den Vorteil, dass nun alle Werte des Intervalls gleichermasen berücksichtigt werden.
 
 \subsection{Hauptschleife}
 Die Hauptfunktion umfasst die grundlegende Schleife zur Auswertung der Datensätze in Bezug auf die Fragestellung.
-Dafür wird ein neuer Datensatz "influence" erstellt, der für jeden Tag, an dem ein Post mit den entsprechenden Filterkriterien verfasst wurde, das Datum, eine Liste aller Posts, die Anzahl dieser Posts sowie den prozentualen Unterschied der dafür vorgesehenen Hilfsfunktionen enthält.
+Dafür wird ein neuer Datensatz ``influence'' erstellt, der für jeden Tag, an dem ein Post mit den entsprechenden Filterkriterien verfasst wurde, das Datum, eine Liste aller Posts, die Anzahl dieser Posts sowie den prozentualen Unterschied der dafür vorgesehenen Hilfsfunktionen enthält.
 So iteriert diese Schleife zunächst über alle Posts (Tweets), die im Datensatz Posts enthalten sind.
 Im Anschluss wird nun durch die Methode check\_filter überprüft, ob die aktuelle Zeile den Filteransprüchen gerecht wird.
 Trifft dies nicht zu, so wird diese Zeile übersprungen.
 Ansonsten wird das Datum aus der aktuellen Zeile ausgelesen.
 Im Folgenden wird nun überprüft, ob der aktuelle Tag schon im Datensatz ``influence'' enthalten ist, was passiert, wenn an einem Tag mehrere Posts vorliegen. Trifft dies zu, so wird dieser nur um den aktuellen Posttext ergänzt, sowie die Anzahl der Posts an diesem Tag inkrementiert.
-Ist dieser Tag noch nicht im Datensatz influences enthalten, so wird für den aktuellen Tag zunächst das Intervall des Stock-Datensatzes bestimmt.
+Ist dieser Tag noch nicht im Datensatz ``influences'' enthalten, so wird für den aktuellen Tag zunächst das Intervall des Stock-Datensatzes bestimmt.
 Ist dies nicht möglich, so wird eine Warnung ausgegeben und die Schleif fährt fort.
 (Dies ist jedoch wie in 3.3.1 beschrieben zu vernachlässigen).
 Wenn das Intervall erfolgreich erstellt wurde, werden nun alle Berechnungen auf das Intervall angewandt.
@@ -194,9 +188,9 @@ Dies könnte daran liegen, dass Dogecoin von Elon Musk mehr als eine Art Neben- 
  	\caption{Datendichte}
  	\label{fig:Datendichte}
 \end{figure}
-Dieses Diagramm zeigt den Tag (x-Achse), sowie die Anzahl der Posts an diesem Tag (y-Achse). Auch hier sieht man die in \ref{sec:Dataunderstanding} aufgeworfene These, das das Korrespondenzverhalten von Elon Musk im Verlauf der Zeit zunimmt.
+Dieses Diagramm zeigt den Tag (x-Achse), sowie die Anzahl der Posts an diesem Tag (y-Achse). Auch hier sieht man die in \ref{sec:Dataunderstanding} aufgeworfene These, dass das Korrespondenzverhalten von Elon Musk im Verlauf der Zeit zunimmt.
 Zudem wird diese Vermutung nun auch durch die Anzahl der Posts an einem Tag gestützt.
-Denn dieser ist zu entnehmen, dass Elon Musk nicht nur an mehreren Tagen, sondern vor allem auch deutlich häufiger pro Tag ``Tweeted''.
+Denn dieser ist zu entnehmen, dass Elon Musk nicht nur an mehreren Tagen, sondern vor allem auch deutlich häufiger pro Tag ``tweetet''.
 Dieses Verhalten kann insbesondere seit der Übernahme der Plattform am 04.04.2022 beobachtet werden.
 Während im Sommer 2019 ein Großteil seiner Posts die Schlüsselwörter von Tesla beinhalteten, postet Elon Musk mittlerweile schon fast genau so viel über Dogecoin wie über Tesla. Das könnte ein Indiz dafür sein, dass Dogecoin für Musk zurzeit an Interesse gewonnen hat.
 
@@ -211,7 +205,7 @@ Während im Sommer 2019 ein Großteil seiner Posts die Schlüsselwörter von Tes
 	\begin{minipage}{0.55\textwidth}
 		Der wichtigste Aspekt, der der Korrelationstabelle des Einfluss-Datensatzes entnommen werden kann, ist die Unabhängigkeit zwischen der Spalte ``count\_posts'' und den Werten ``trend'' und ``absolute''.
 		Dies zeigt, dass die Anzahl der Posts (Tweets) an einem Tag keinen Einfluss auf den Verlauf der beiden Wertpapiere hat.
-		Die Korrelationstabelle wurde unter Verwendung der Bibliothek Seaborn aus der Vereinigung der Schlüsselwort freien Einfluss-Datensätz erstellt.
+		Die Korrelationstabelle wurde unter Verwendung der Bibliothek Seaborn aus der Vereinigung der Schlüsselwort freien Einfluss-Datensatz erstellt.
 	\begin{python}
 	influences_corr = pd.concat(
 	    [
@@ -238,7 +232,7 @@ Während im Sommer 2019 ein Großteil seiner Posts die Schlüsselwörter von Tes
  	\label{fig:Trend}
 \end{figure}
 Bei diesen Diagrammen wird jeweils der Trend von Doge und Tesla nach einem Post von Musk gezeigt. Einmal den Trend, wenn Musk einen Tweet mit Doge oder eben Tesla machte und einmal wenn er einfach nur einen Tweet machte, aber ohne Doge oder Tesla. Bei Doge erkennt man, dass der Trend kaum von Musks Tweets beeinflusst wird, da die Veränderung in \% immer recht gering/gleich ist, im Vergleich zu den Veränderungen ohne das
-Schlüsselwort Doge, und manchmal sogar die Veränderung des Trends ohne Musks Tweets deutlich höher ist als mit. Bei Tesla haben Musks Tweets deutlich mehr Einfluss auf die Aktie, man kann deutlich erkennen das ab 2018 Musk mehr tweetete, aber auch das es einige Peeks gibt bei denen ein Tweet den Trend positiv, aber auch negativ veränderte. Mann sieht aber auch, dass die meiste Zeit der Trend ohne einen solchen Tweet ähnlich verläuft wie der Trend mit einem solchen Tweet. Daher kann man schließen, dass Musk durch seine Tweets zwar die Tesla Aktie beeinflussen kann, aber die Aktie auch immer noch von anderen (uns unbekannten) Faktoren abhängt. Meistens verhält sich die Aktie so, als würde Musk nicht den Markt beeinflussen, aber an manchen Punkten schafft er es schon den Trend der Aktie stark in eine Richtung zu lenken, dabei wissen wir jedoch nicht, ob er die Veränderung geplant hat oder es einfach zufällig geschah.
+Schlüsselwort Doge, und manchmal sogar die Veränderung des Trends ohne Musks Tweets deutlich höher ist als mit. Bei Tesla haben Musks Tweets deutlich mehr Einfluss auf die Aktie, man kann deutlich erkennen das ab 2018 Musk mehr tweetete, aber auch das es einige Spitzen / Peeks gibt bei denen ein Tweet den Trend positiv, aber auch negativ veränderte. Mann sieht aber auch, dass die meiste Zeit der Trend ohne einen solchen Tweet ähnlich verläuft wie der Trend mit einem solchen Tweet. Daher kann man schließen, dass Musk durch seine Tweets zwar die Tesla Aktie beeinflussen kann, aber die Aktie auch immer noch von anderen (uns unbekannten) Faktoren abhängt. Meistens verhält sich die Aktie so, als würde Musk nicht den Markt beeinflussen, aber an manchen Punkten schafft er es schon den Trend der Aktie stark in eine Richtung zu lenken, dabei wissen wir jedoch nicht, ob er die Veränderung geplant hat oder es einfach zufällig geschah.
 
 \subsubsection{Durchschnitt}
 \begin{figure}[!htb]
@@ -246,10 +240,10 @@ Schlüsselwort Doge, und manchmal sogar die Veränderung des Trends ohne Musks T
  	\caption{Trend Durchschnitt}
  	\label{fig:Trend Durchschnitt}
 \end{figure}
-In diesen Grafiken werden Tesla und Dogecoin anhand der Aktientrends verglichen. In beiden Fällen wird einmal der Trend genommen ohne, dass Elon Musk das Wort „TSLA“ oder „DOGE“ in seinen Tweets genutzt hat und einmal, wenn er es benutzt hat.
-In der linken Grafik wird auf die Dogecoin Aktie geschaut, bei Tweets ohne die Verwendung des Wortes „DOGE“ und mit der Verwendung des Wortes „DOGE“ hier kann man gut sehen, dass der Trend ohne die Verwendung bei 1.08 liegt und mit der Verwendung bei 1.02.
-Daraus kann man hier ziehen, dass Elon Musk durch die Verwendung des Wortes „DOGE“ in seinen Tweets einen Einfluss auf den Trend der Aktie Dogecoin haben kann. In diesem Fall aber sogar negativen Einfluss.
-In der rechten Grafik wird auf die Tesla Aktie geschaut, hier wird nach Verwendung des Wortes "TSLA“ in seinen Tweets geschaut. Hier liegt der Wert ohne die Verwendung des Wortes bei 1.01 und wenn er es verwendet bei 1.02.
+In diesen Grafiken werden Tesla und Dogecoin anhand der Aktientrends verglichen. In beiden Fällen wird einmal der Trend genommen ohne, dass Elon Musk das Wort ``TSLA'' oder ``DOGE'' in seinen Tweets genutzt hat und einmal, wenn er es benutzt hat.
+In der linken Grafik wird auf die Dogecoin Aktie geschaut, bei Tweets ohne die Verwendung des Wortes ``DOGE'' und mit der Verwendung des Wortes ``DOGE'' hier kann man gut sehen, dass der Trend ohne die Verwendung bei 1.08 liegt und mit der Verwendung bei 1.02.
+Daraus kann man hier ziehen, dass Elon Musk durch die Verwendung des Wortes ``DOGE'' in seinen Tweets einen Einfluss auf den Trend der Aktie Dogecoin haben kann. In diesem Fall aber sogar negativen Einfluss.
+In der rechten Grafik wird auf die Tesla Aktie geschaut, hier wird nach Verwendung des Wortes ``TSLA'' in seinen Tweets geschaut. Hier liegt der Wert ohne die Verwendung des Wortes bei 1.01 und wenn er es verwendet bei 1.02.
 Dadurch kann man bei der rechten Grafik ziehen, dass es bei der Tesla Aktie keine wirklichen Auswirkungen auf den allgemeinen Trend der Aktie gab.
 
 
@@ -271,7 +265,7 @@ Nun haben wir die Absoluten werte in \% von Dogecoin und Tesla nach eine Post vo
 \end{figure}
 In dieser Grafik schauen wir uns die Auswirkung auf die absoluten Werte der beiden Aktien an, hier kann man direkt auf den ersten Blick einen etwas größeren Unterschied erkennen.
 Bei ``DOGE'' ist der absolute Wert bei 2.03, wenn Elon Musk das Wort nicht in seinen Tweets genutzt hat, aber wenn er es benutzt hat, steigt der absolute Wert auf 2.35. Hieraus lässt sich schließen, dass er mit Sicherheit etwas Einfluss darauf hat, auch wenn es nicht viel ist.
-Genau dasselbe mit der ''TSLA'' Aktie. Hier ist der absolute Wert bei 1.08, wenn er es in seinen Tweets nicht erwähnt, aber wenn es erwähnt wird, steigt der absolute Wert auf 1.63 an. Hier ist sein Einfluss sogar noch etwas stärker als bei DOGE.
+Genau dasselbe mit der ``TSLA'' Aktie. Hier ist der absolute Wert bei 1.08, wenn er es in seinen Tweets nicht erwähnt, aber wenn es erwähnt wird, steigt der absolute Wert auf 1.63 an. Hier ist sein Einfluss sogar noch etwas stärker als bei DOGE.
 
 
 
