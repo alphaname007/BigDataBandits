@@ -31,12 +31,19 @@
 \tableofcontents
 
 \section{Einleitung}
-Wir bekamen die Aufgabe, einen oder mehrere Datensätze zu suchen, aus diesen eine geeignete Frage zu erstellen und diese Frage wiederum, durch verschiedene Auswertungen in Python, zu beantworten. Auf der Suchen nach dem richtigen Datensatz fanden wir auf Kaggel einen bzw. mehrere Datensätze. Einen mit Daten von Elon Musks Posts auf Twitter, einen mit dem Kurs von Dogecoin und einen mit dem Kurs von Tesla. Durch die drei Datensätzen kamen wir dann auf unsere ursprüngliche Fragestellung. Diese war, ob Marktmanipulation durch Privatpersonen auf Social Media möglich wäre. Genauer gesagt, wir hatten alle schon öfters gehört, dass Elon Musk den Markt allein mit seinen Tweets stark beeinflussen konnte und das natürlich einen immensen Vorteil für ihn habe. Wir dachten uns dann, mit den gegebenen Datensätzen könnten wir analysieren, ob er das wirklich kann, und wenn ja, woran man erkennen kann, dass Musk genau jetzt den Markt so oder so beeinflusst. Mit diesen Informationen könnten wir dann diesen Einfluss für uns selbst nutzen. Wenn Musk twittert, könnten wir schauen, was er twitterte und basierend auf unseren Ergebnissen errechnen oder zumindest erahnen, wie der Kurs von Tesla oder Dogecoin sich in den nächsten Tagen voraussichtlich verändert. Das wiederum könnten wir nutzen, um richtig zu investieren, oder gegebenenfalls unsere Anteile zu verkaufen, und somit die Wahrscheinlichkeit erhöhen, Gewinn zu erwirtschaften oder zumindest Verlust zu vermeiden. Jedoch mussten wir dann gegen Ende des Projekts feststellen, dass die Fragestellung nicht genau passt, da wir nicht die Daten hatten, um im Allgemeinen zu sagen, ob Marktmanipulation auf Social Media möglich ist. Sondern nur die, um zu sagen, ob Elon Musk über Twitter Einfluss auf Tesla oder Dogecoin hat. Deshalb änderten wir unsere Frage ab und spezialisierten sie genauer auf ausgewählten Datensätze.
-
+Da gerade das digitale Zeitalter geprägt von dem Einfluss großer Social-Media Plattformen ist, haben die Big Data Bandits beschlossen den Extremen dieser Beeinflussung ins Auge zu schauen.
+Unter dem Aspekt, dass Elon Musk wohl zu den populärsten, einflussreichsten und dominantesten Personen des öffentlichen Lebens zählt, nominiert ihn insbesondere sein ``besonderes'' Korrespondenzverhalten gepaart mit seinen wirtschaftlichen Interessen für eine genauere Untersuchung.
+Im folgenden Abstract findet eine Beantwortung und Beurteilung der Fragestellung im Ramen der gestellten Aufgabe statt.
+Dafür analysieren wir unsere entsprechenden Datensätze mit einem für die Aufgabe geschriebenen Python Script.
+Dieses kann aufgrund seiner hohen Modularität auch in der Zukunft zur Beantwortung ähnlicher Fragestellungen verwendet werden kann.
 \newpage
 
 \section{Fragestellung}
-Unsere schlussendliche Fragestellung ist nun: "Inwieweit nimmt Elon Musk durch sein Verhalten auf der Social Media Plattform X (ehem. Twitter) Einfluss auf den Kursverlauf von Tesla und Dogecoin?". In dieser Frage ist auch noch der Unterpunkt Legalität mit einbegriffen. Also wenn er den Markt wirklich manipuliert, ob er das überhaupt ausnutzen darf, oder ob er zukünftig mit Strafen des Staates rechnen muss. Der Hauptteil der Frag ist jedoch immer noch, ob Elon Musk such Twitter Einfluss auf die Teslaaktie oder den Kurs von Dogecoin hat. Darin enthalten sind kleinere Unterfragen, wie, haben seine Tweets an sich Einfluss, oder haben sie erst Einfluss, wenn er über die Themen (Tesla oder Dogecoin) etwas schreibt. Und ob Musk mehr Einfluss auf einen Kurs hat als auf den anderen. 
+Die Fragestellung "Inwieweit nimmt Elon Musk durch sein Verhalten auf der Social Media Plattform X (ehem. Twitter) Einfluss auf den Kursverlauf von Tesla und Dogecoin?" wurde in mehreren Iterrationsschritten optimiert. 
+Dies ist insbesondere dem Zeitraum geschuldet, in welchem die Auswertung abgeschlossen sein musste.
+Somit war es uns leider nicht möglich, eine allgemeinere Fragestellung über den allgemeinen Einfluss von Privatpersonen auf den Aktienmarkt unter der Berücksichtigung verschiedener Personen zu beantworten.
+Dafür konnten wir nun zusätzlich Legalitätsapekte, sowie konkrete Empfehlungen für ein profitables Handeln als Privatperson mit in unsere Ausarbeitung nehmen.
+
 
 
 
@@ -44,7 +51,7 @@ Unsere schlussendliche Fragestellung ist nun: "Inwieweit nimmt Elon Musk durch s
 Die Datensätze entstammen der Community-Plattform \href{https://www.kaggle.com/datasets/dhruvildave/dogecoin-historical-data}{Kaggle}.
 Im Folgenden verwenden wir einen Datensatz, der alle Posts (``Tweets'') des Tesla-CEOs Elon Musk  beinhaltet: \href{https://www.kaggle.com/datasets/aryansingh0909/elon-musk-tweets-updated-daily}{Posts}, sowie zwei weitere Datensätze, die den Kursverlauf von \href{https://www.kaggle.com/datasets/dhruvildave/dogecoin-historical-datay}{Dogecoin} und \href{https://www.kaggle.com/datasets/dhruvildave/dogecoin-historical-datay}{Tesla} umfassen.
 Alle Datensätze vermitteln einen seriösen und schlüssigen Eindruck, was unter anderem an den fehlerfreien Werten liegt.
-Zudem wurde der Tesla-Datensatz an den Aktiensplit angepasst und wurde unter Verwendung der offiziellen Yahoo Finance API erstellt.
+Zudem wurde der Tesla-Datensatz an den Aktiensplit angepasst und unter Verwendung der offiziellen Yahoo Finance API erstellt.
 Für die Auswertung werden insbesondere die Zeilen ``date'' und ``raw\_close'' der Stock-Datensätze, sowie die Spalten ``datetime'' und ``text'' des Post-Datensatzes betrachtet.
 
 \subsection{Dataunderstanding}
