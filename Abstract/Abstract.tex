@@ -42,7 +42,7 @@ Weitere Details bezüglich des Codes können der \href{https://github.com/alphan
 
 
 \section{Fragestellung}
-Die Fragestellung: ``Inwieweit nimmt Elon Musk durch sein Verhalten auf der Social Media Plattform X (ehem. Twitter) Einfluss auf den Kursverlauf von Tesla und Dogecoin?'' wurde in mehreren Iterrationsschritten optimiert. 
+Die Fragestellung: ``Inwieweit nimmt Elon Musk durch sein Verhalten auf der Social Media Plattform X (ehem. Twitter) Einfluss auf den Kursverlauf von Tesla und Dogecoin?'' wurde in mehreren Iterationsschritten optimiert. 
 Dies ist insbesondere dem Zeitraum geschuldet, in welchem die Auswertung abgeschlossen sein musste.
 Somit war es uns zwar nicht möglich, eine allgemeinere Fragestellung über den allgemeinen Einfluss von Privatpersonen auf den Aktienmarkt unter der Berücksichtigung verschiedener Personen zu beantworten.
 Jedoch konnten wir nun zusätzliche Legalitätsapekte, sowie konkrete Empfehlungen für ein profitables Investieren als Privatperson mit in unsere Ausarbeitung nehmen.
@@ -61,8 +61,8 @@ Für die Auswertung werden insbesondere die Zeilen ``date'' und ``raw\_close'' d
 
 \subsubsection{Datendichte}
 \begin{figure}[!htb]
-  	\includegraphics[width=.7\textwidth, height=100px]{../imgs/Dichte1.png}
-	\includegraphics[width=.3\textwidth, height=100px]{../imgs/Dichte2.png}
+  	\includegraphics[width=.7\textwidth, height=100px]{./imgs/Dichte1.png}
+	\includegraphics[width=.3\textwidth, height=100px]{./imgs/Dichte2.png}
  	\caption{Datendichte}
  	\label{fig:Datendichte}
 \end{figure}
@@ -87,7 +87,7 @@ def get_density(df:pd.DataFrame):
 
 
 \subsection{Data Preperation}
-Da die Datensätze schon sehr gut strukturiert sind, ist es nicht nötig eine erweiterte Datapreperation durchzuführen.
+Da die Datensätze schon sehr gut strukturiert sind, ist es nicht nötig eine erweiterte Data Preperation durchzuführen.
 Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Speichergröße zu verbessern, jedoch ist beides unerheblich und würde die Weiterentwicklung erheblich einschränken.
 
 
@@ -100,10 +100,10 @@ Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Spe
 \subsubsection{Intervalselection}
 Die Methode \textit{check\_filter()} erkennt, ob in einem Text gewisse Schlüsselwörter aus einer Filter-Liste enthalten sind.
 Dies ermöglicht das Filtern der Posts anhand der evtl. im Post (Tweet) enthaltenen Schlüsselwörter (bsp.: ``Dogecoin'').
-Dabei kann in abhängigkeit der Variable \textit{hit}, entwedern nach dem vorhandenen sein (hit=True) oder dem fehlen (hit=Flase) der Schlüsselwörter sortiert werden.
+Dabei kann in Abhängigkeit der Variable \textit{hit}, entweder nach dem vorhandenen sein (hit=True) oder dem Fehlen (hit=Flase) der Schlüsselwörter sortiert werden.
 Die Methode \textit{get\_interval} generiert einen Datensatz-Ausschnitt, der ausgehend von einem Startdatum die nächsten vorhandenen n Tage aus einem Stock-Datensatz enthält.
-Die Anzahl der Tage wird durch den Parameter \textit{interval\_length} gegeben und beträgt Standartmäßig den Wert 5 (eine Arbeitwoche).
-Es wird auserdem berücksichtigt, dass das Startdatum nicht im Stock-Datensatz enthalten ist.
+Die Anzahl der Tage wird durch den Parameter \textit{interval\_length} gegeben und beträgt standardmäßig dem Wert 5 (eine Arbeitswoche).
+Es wird außerdem berücksichtigt, dass das Startdatum nicht im Stock-Datensatz enthalten ist.
 In diesem Fall nimmt das Unterprogramm das nächste vorhandene Datum.
 Ausgehend von dem gefundenen Datum, werden der Start-Index sowie der End-Index des Datensatz-Ausschnittes berechnet.
 
@@ -159,7 +159,7 @@ def get_influence(stock:pd.DataFrame, posts:pd.DataFrame=Posts, filter_list:list
 \end{python}
 
 \subsection{Erzeugung}
-Filter..
+Filter.
 
 
 \newpage
@@ -169,7 +169,7 @@ Filter..
 \subsubsection{Verteilung}
 \begin{figure}[h]
   	\centering
-  	\includegraphics[width=\textwidth]{../imgs/Verteilung.png}
+  	\includegraphics[width=\textwidth]{./imgs/Verteilung.png}
  	\caption{Verteilung}
  	\label{fig:Verteilung}
 \end{figure}
@@ -183,7 +183,7 @@ Dies könnte daran liegen, dass Dogecoin von Elon Musk mehr als eine Art Neben- 
 
 \subsubsection{Verlauf}
 \begin{figure}[!htb]
-  	\includegraphics[width=\textwidth, center]{../imgs/Verlauf.png}
+  	\includegraphics[width=\textwidth, center]{./imgs/Verlauf.png}
  	\caption{Datendichte}
  	\label{fig:Datendichte}
 \end{figure}
@@ -196,7 +196,7 @@ Während im Sommer 2019 ein Großteil seiner Posts die Schlüsselwörter von Tes
 \subsubsection{Zusammenhänge}
 \begin{figure}[!htb]
 	\begin{minipage}{0.4\textwidth}
-    		\includegraphics[width=\textwidth]{../imgs/Korrelation.png}
+    		\includegraphics[width=\textwidth]{./imgs/Korrelation.png}
     		\caption{Korrelation}
     		\label{fig:Korrelation}
   	\end{minipage}
@@ -226,7 +226,7 @@ Während im Sommer 2019 ein Großteil seiner Posts die Schlüsselwörter von Tes
 \subsection{Trend}
 \subsubsection{Verlauf}
 \begin{figure}[!htb]
-  	\includegraphics[width=\textwidth, center]{../imgs/Trend.png}
+  	\includegraphics[width=\textwidth, center]{./imgs/Trend.png}
  	\caption{Trend}
  	\label{fig:Trend}
 \end{figure}
@@ -235,7 +235,7 @@ Schlüsselwort Doge, und manchmal sogar die Veränderung des Trends ohne Musks T
 
 \subsubsection{Durchschnitt}
 \begin{figure}[!htb]
-  	\includegraphics[width=\textwidth, center]{../imgs/Trend_Durchschnitt.png}
+  	\includegraphics[width=\textwidth, center]{./imgs/Trend_Durchschnitt.png}
  	\caption{Trend Durchschnitt}
  	\label{fig:Trend Durchschnitt}
 \end{figure}
@@ -249,7 +249,7 @@ Dadurch kann man bei der rechten Grafik ziehen, dass es bei der Tesla Aktie kein
 \subsection{Absolute}
 \subsubsection{Verlauf}
 \begin{figure}[!htb]
-  	\includegraphics[width=\textwidth, center]{../imgs/Absolut.png}
+  	\includegraphics[width=\textwidth, center]{./imgs/Absolut.png}
  	\caption{Absolut}
  	\label{fig:Absolut}
 \end{figure}
@@ -258,13 +258,13 @@ Nun haben wir die Absoluten werte in \% von Dogecoin und Tesla nach eine Post vo
 
 \subsubsection{Durchschnitt}
 \begin{figure}[!htb]
-  	\includegraphics[width=\textwidth, center]{../imgs/Absolut_Durchschnitt.png}
+  	\includegraphics[width=\textwidth, center]{./imgs/Absolut_Durchschnitt.png}
  	\caption{Absolut Durchschnitt}
  	\label{fig:Absolut Durchschnitt}
 \end{figure}
 In dieser Grafik schauen wir uns die Auswirkung auf die absoluten Werte der beiden Aktien an, hier kann man direkt auf den ersten Blick einen etwas größeren Unterschied erkennen.
 Bei ``DOGE'' ist der absolute Wert bei 2.03, wenn Elon Musk das Wort nicht in seinen Tweets genutzt hat, aber wenn er es benutzt hat, steigt der absolute Wert auf 2.35. Hieraus lässt sich schließen, dass er mit Sicherheit etwas Einfluss darauf hat, auch wenn es nicht viel ist.
-Genau dasselbe mit der ``TSLA'' Aktie. Hier ist der absolute Wert bei 1.08, wenn er es in seinen Tweets nicht erwähnt, aber wenn es erwähnt wird, steigt der absolute Wert auf 1.63 an. Hier ist sein Einfluss sogar noch etwas stärker als bei DOGE.
+Genau dasselbe mit der ''TSLA'' Aktie. Hier ist der absolute Wert bei 1.08, wenn er es in seinen Tweets nicht erwähnt, aber wenn es erwähnt wird, steigt der absolute Wert auf 1.63 an. Hier ist sein Einfluss sogar noch etwas stärker als bei DOGE.
 
 
 
@@ -272,15 +272,10 @@ Genau dasselbe mit der ``TSLA'' Aktie. Hier ist der absolute Wert bei 1.08, wenn
 \section{Gesamtbewertung / Erwartung}
 
 \subsection{Die Legalität}
-Die Legalität und die Auswirkung von Elon Musks Tweets auf den Aktienmarkt sind ein kompliziertes
-Thema. Normalerweise müssen Äußerungen insbesondere von einflussreichen Personen, Managern
-und Geschäftsführern von börsenorientierten Unternehmen in dem Rahmen der geltenden Gesetze
-und Vorschriften erfolgen.
+Die Legalität und die Auswirkung von Elon Musks Tweets auf den Aktienmarkt sind ein kompliziertes Thema. Normalerweise müssen Äußerungen insbesondere von einflussreichen Personen, Managern und Geschäftsführern von börsenorientierten Unternehmen in dem Rahmen der geltenden Gesetze und Vorschriften erfolgen.
 Die SEC (Securities and Exchange Commission) hat spezifische Regeln für Offenlegungen durch
 Direktoren börsennotierter Unternehmen. Der Zweck dieser Regeln besteht darin, sicherzustellen,
-dass relevante Informationen fair und gleichzeitig für alle Marktteilnehmer zugänglich sind. Musk und
-Tesla standen in der Vergangenheit unter Beobachtung der SEC, insbesondere aufgrund von Elon
-Musks Tweets über Tesla. Einige von Musks Tweets wurden als potenzielle Verstöße gegen die SEC-Regeln angesehen, was zu Rechtsstreitigkeiten und Vergleichen mit der SEC führte. Es ist wichtig zu beachten, dass die Rechtslage in solchen Fällen weitgehend von den konkreten Umständen und den
+dass relevante Informationen fair und gleichzeitig für alle Marktteilnehmer zugänglich sind. Musk und Tesla standen in der Vergangenheit unter Beobachtung der SEC, insbesondere aufgrund von Elon Musks Tweets über Tesla. Einige von Musks Tweets wurden als potenzielle Verstöße gegen die SEC-Regeln angesehen, was zu Rechtsstreitigkeiten und Vergleichen mit der SEC führte. Es ist wichtig zu beachten, dass die Rechtslage in solchen Fällen weitgehend von den konkreten Umständen und den
 geltenden Gesetzen abhängt. Musk und sein Unternehmen müssen sich noch mit der öffentlichen
 Kommunikation und ihren Auswirkungen auf den Aktienmarkt befassen.
 
