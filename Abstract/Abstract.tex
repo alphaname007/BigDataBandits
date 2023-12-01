@@ -73,6 +73,7 @@ demzufolge, weist der Dogecoin-Datensatz auch keine fehlenden Datensätze auf, d
 Die prozentuale Anzahl der fehlenden Tage kann der zweiten Grafik entnommen werden.
 Darüber hinaus lässt sich aus dem Schaubild die Aussage ableiten, dass das Korrespondenzverhalten von Elon Musk auf der Plattform X über die Zeit zunimmt.
 Zusammen mit der eineinhalbjährigen Pause nach seinem ersten Tweet am 04.06.2010 lässt dies die Vermutung offen, dass Musk erst nach und nach das Potenzial der Plattform erkannte, bis er diese schließlich am 04.04.2022 unter fragwürdigen Umständen aufkaufte. 
+
 Die Auswertung der fehlenden Tage wird durch die Methode \textit{get\_density(df:pd.DataFrame)} ermöglicht, welche zunächst eine Liste aller Tage erstellt, die im jeweiligen Datensatz vorhanden sein sollten.
 Im Folgenden wird ein neuer Datensatz erstellt, der alle Tage, sowie den entsprechenden booleschen Wert (1 vorhanden / 0 fehlend) für jeden Tag des zu untersuchenden Datensatzes enthält.
 Dieser resultierende Datensatz kann nun einfach mit einem Eventplot skizziert werden und bietet die einfache Möglichkeit, den Prozentsatz der fehlenden Tage zu ermitteln.
@@ -85,7 +86,6 @@ def get_density(df:pd.DataFrame):
     return all_dates
 \end{python}
 
-
 \subsection{Data Preperation}
 Da die Datensätze schon sehr gut strukturiert sind, ist es nicht nötig eine erweiterte Datapreperation durchzuführen.
 Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Speichergröße zu verbessern, jedoch ist beides unerheblich und würde die Weiterentwicklung erheblich einschränken.
@@ -93,8 +93,6 @@ Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Spe
 
 
 \section{Lösungsansatz}
-
-
 \subsection{Hilfsfunktionen}
 
 \subsubsection{Intervalselection}
@@ -108,7 +106,16 @@ In diesem Fall nimmt das Unterprogramm das nächste vorhandene Datum.
 Ausgehend von dem gefundenen Datum, werden der Start-Index sowie der End-Index des Datensatz-Ausschnittes berechnet.
 
 \subsubsection{Kursverlauf}
+Dise Hilfsmethoden werden dazu verwendet, die Änderrung des Aktienkurses im gegeben Zeitraum zu ermöglichen.
+Dafür betrachten wir die Spalte ``close'', die dem täglichen Abschlusswert der Aktie entspricht
+So berechnet die Methode \textit{get\_absolute} den prozentualen Unterschied zwischen dem ersten sowie letzten Tag des Intervals.
+Dies erfolgt durch die Formel day\_0 / day\_n * 100, dabei entspricht day\_0 dem ersten Tag und day\_n dem letzten Tag des Intervalls:
 
+Die nachfolgende Methode \textit{get\_trend()} ist ein wichtiges Kernstück der Analyse.
+Diese Funktion ermittelt mit Hilfe einer linearen Regression eine Gerade, welche das Wachstum einer Aktie für einem gegebenen Zeitraum repräsentiert.
+Anschliesend wird mit hilfe des Modells der erwartete Wert der Aktie für den ersten bzw. letzten Tag des zu betrachtenden Intervals berechnet.
+Mit diesen beiden abgeleiteten Werten kann nun wie in der Methode \textit{get\_absolute()} beschrieben der prozentualen Unterschied kalkuliert werden.
+Dieses Verfahren hat den Vorteil, dass nun alle Werte des Intervalls gleichermasen berücksichtigt werden.
 
 \subsection{Hauptschleife}
 Die Hauptfunktion umfasst die grundlegende Schleife zur Auswertung der Datensätze in Bezug auf die Fragestellung.
