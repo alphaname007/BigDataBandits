@@ -123,9 +123,9 @@ Ist dieser Tag noch nicht im Datensatz ``influences'' enthalten, so wird für de
 Ist dies nicht möglich, so wird eine Warnung ausgegeben und die Schleif fährt fort.
 (Dies ist jedoch wie in \ref{fig:Datendichte} beschrieben zu vernachlässigen).
 Wenn das Intervall erfolgreich erstellt wurde, werden nun alle Berechnungen auf das Intervall angewandt.
-Schlussendlich werden nun alle Werte unter diesem Tag in den Datensatz ``influences'' eingefügt.
-Hat die Schleife nun alle Posts abgearbeitet, kann nun dieser Datensatz zurückgegeben werden.
-Zudem wird nun noch der prozentuale Anteil der im ``influence'' enthaltenen Posts von allen Posts ermittelt und zurückgegeben werden.
+Schlussendlich werden die Werte unter diesem Tag in den Datensatz ``influences'' eingefügt.
+Hat die Schleife alle Posts abgearbeitet, kann dieser Datensatz zurückgegeben werden.
+Zudem wird der prozentuale Anteil der im ``influence'' enthaltenen Posts von allen Posts ermittelt und zurückgegeben.
 \begin{python}
 def get_influence(stock:pd.DataFrame, posts:pd.DataFrame=Posts, filter_list:list=[], hit:bool=False,):
     # find a common start date
@@ -177,10 +177,10 @@ Filter.
 Dieses Diagramm zeigt die Verteilung der entsprechenden Schlüsselwörter in allen Posts des zu betrachtenden Zeitraums.
 Dabei ist es wichtig zu beachten, dass der zu betrachtende Zeitraum zusammen mit den Aufzeichnungen des Kursverlaufs beginnt.
 Demzufolge wird beispielsweise die Verteilung der Schlüsselwörter für Dogecoin nur für den Zeitraum des Dogecoin-Datensatzes erstellt.
-Interessant ist hierbei insbesondere die Tatsache, dass Elon Musk fast doppelt so viel über Tesla ``twittert'' als über Dogecoin.
+Interessant ist hierbei die Tatsache, dass Elon Musk fast doppelt so viel über Tesla ``twittert'' als über Dogecoin.
 Insbesondere wenn man sich die kombinierten Schlüsselwörter über den Zeitraum des Dogecoin-Datensatzes (da Dogecoin-Datensatz \textless Tesla-Datensatz) (3. Kuchendiagramm) näher anschaut, ist deutlich zu erkennen, dass selbst hier Tesla einen Anteil von 28.8\% besitzt (da 41.1\%-12.3\%).
 Dies ist immer noch mehr als doppelt so viel als die 12.3\% der Dogecoin-Posts.
-Dies könnte daran liegen, dass Dogecoin von Elon Musk mehr als eine Art Neben- oder Spaßprojekt angesehen wird; seine Verbundenheit zu Tesla ist wohl auch schon alleine durch seine Position (CEO) gegeben.
+Dies könnte daran liegen, dass Dogecoin von Elon Musk mehr als eine Art Neben- oder Spaßprojekt angesehen wird; seine Verbundenheit zu Tesla ist auch schon alleine durch seine Position als CEO gegeben.
 
 \subsubsection{Verlauf}
 \begin{figure}[!htb]
@@ -231,8 +231,8 @@ Während im Sommer 2019 ein Großteil seiner Posts die Schlüsselwörter von Tes
  	\caption{Trend}
  	\label{fig:Trend}
 \end{figure}
-Bei diesen Diagrammen wird jeweils der Trend von Doge und Tesla nach einem Post von Musk gezeigt. Einmal den Trend, wenn Musk einen Tweet mit Doge oder eben Tesla machte und einmal wenn er einfach nur einen Tweet machte, aber ohne Doge oder Tesla. Bei Doge erkennt man, dass der Trend kaum von Musks Tweets beeinflusst wird, da die Veränderung in \% immer recht gering/gleich ist, im Vergleich zu den Veränderungen ohne das
-Schlüsselwort Doge, und manchmal sogar die Veränderung des Trends ohne Musks Tweets deutlich höher ist als mit. Bei Tesla haben Musks Tweets deutlich mehr Einfluss auf die Aktie, man kann deutlich erkennen das ab 2018 Musk mehr tweetete, aber auch das es einige Spitzen / Peeks gibt bei denen ein Tweet den Trend positiv, aber auch negativ veränderte. Mann sieht aber auch, dass die meiste Zeit der Trend ohne einen solchen Tweet ähnlich verläuft wie der Trend mit einem solchen Tweet. Daher kann man schließen, dass Musk durch seine Tweets zwar die Tesla Aktie beeinflussen kann, aber die Aktie auch immer noch von anderen (uns unbekannten) Faktoren abhängt. Meistens verhält sich die Aktie so, als würde Musk nicht den Markt beeinflussen, aber an manchen Punkten schafft er es schon den Trend der Aktie stark in eine Richtung zu lenken, dabei wissen wir jedoch nicht, ob er die Veränderung geplant hat oder es einfach zufällig geschah.
+Bei diesen Diagrammen wird jeweils der Trend von Doge und Tesla nach einem Post von Musk gezeigt. Einmal den Trend, wenn Musk einen Tweet mit Doge oder eben Tesla machte und einmal wenn er einfach nur einen Tweet machte, aber ohne Doge oder Tesla. Bei Doge erkennt man, dass der Trend kaum von Musks Tweets beeinflusst wird, da die Veränderung in \% immer recht gering ist, im Vergleich zu den Veränderungen ohne das
+Schlüsselwort Doge, und manchmal sogar die Veränderung des Trends ohne Musks Tweets deutlich höher ist als mit. Bei Tesla haben Musks Tweets deutlich mehr Einfluss auf den Aktienverlauf, man kann deutlich erkennen, dass Musk ab 2018 mehr tweetete, aber auch, dass es einige Spitzen gibt, bei denen ein Tweet den Trend positiv, aber auch negativ veränderte. Man sieht aber auch, dass die meiste Zeit der Trend ohne einen solchen Tweet ähnlich verläuft wie der Trend mit einem solchen Tweet. Daher kann man schließen, dass Musk durch seine Tweets zwar die Tesla Aktie beeinflussen kann, aber die Aktie auch immer noch von anderen uns unbekannten Faktoren abhängt. Meistens verhält sich die Aktie so, als würde Musk nicht den Markt beeinflussen, aber an manchen Punkten schafft er es schon den Trend der Aktie stark in eine Richtung zu lenken, dabei wissen wir jedoch nicht, ob er die Veränderung geplant hat oder es einfach zufällig geschah.
 
 \subsubsection{Durchschnitt}
 \begin{figure}[!htb]
