@@ -52,7 +52,7 @@ Jedoch konnten wir nun zusätzliche Legalitätsaspekte, sowie konkrete Empfehlun
 
 \section{Datensätze}
 Die Datensätze entstammen der Community-Plattform \href{https://www.kaggle.com/datasets/dhruvildave/dogecoin-historical-data}{Kaggle}.
-Im Folgenden verwenden wir einen Datensatz, der alle Posts (``Tweets'') des Tesla-CEOs Elon Musk  beinhaltet: \href{https://www.kaggle.com/datasets/aryansingh0909/elon-musk-tweets-updated-daily}{Posts}, sowie zwei weitere Datensätze, die den Kursverlauf von \href{https://www.kaggle.com/datasets/dhruvildave/dogecoin-historical-datay}{Dogecoin} und \href{https://www.kaggle.com/datasets/dhruvildave/dogecoin-historical-datay}{Tesla} umfassen.
+Im Folgenden verwenden wir einen Datensatz, der alle Posts (``Tweets'') des Tesla-CEOs Elon Musk  beinhaltet: \href{https://www.kaggle.com/datasets/aryansingh0909/elon-musk-tweets-updated-daily}{Posts}, sowie zwei weitere Datensätze, die den Kursverlauf von \href{https://www.kaggle.com/datasets/dhruvildave/dogecoin-historical-data}{Dogecoin} und \href{https://www.kaggle.com/datasets/guillemservera/tsla-stock-data}{Tesla} umfassen.
 Alle Datensätze vermitteln einen seriösen und schlüssigen Eindruck, was unter anderem an den fehlerfreien und plausiblen Werten liegt.
 Zudem wurde der Tesla-Datensatz an den Aktiensplit angepasst und unter Verwendung der offiziellen Yahoo Finance API erstellt.
 Für die Auswertung werden insbesondere die Zeilen ``date'' und ``raw\_close'' der Stock-Datensätze, sowie die Spalten ``datetime'' und ``text'' des Post-Datensatzes betrachtet.
@@ -73,10 +73,10 @@ Die Regelmäßigkeit der fehlenden Daten im Tesla-Datensatz kann auf die geschlo
 demzufolge, weist der Dogecoin-Datensatz auch keine fehlenden Datensätze auf, da die Kryptomärkte keiner Schließzeit unterliegen.
 Die prozentuale Anzahl der fehlenden Tage kann der zweiten Grafik entnommen werden.
 Darüber hinaus lässt sich aus dem Schaubild die Aussage ableiten, dass das Korrespondenzverhalten von Elon Musk auf der Plattform X über die Zeit zunimmt.
-Zusammen mit der eineinhalbjährigen Pause nach seinem ersten Tweet am 04.06.2010 lässt dies die Vermutung offen, dass Musk erst nach und nach das Potenzial der Plattform erkannte, bis er diese schließlich am 04.04.2022 unter fragwürdigen Umständen aufkaufte. 
+Zusammen mit der eineinhalbjährigen Pause nach seinem ersten Tweet am 04.06.2010 lässt dies die Vermutung offen, dass Musk erst nach und nach das Potenzial der Plattform erkannte, bis er diese schließlich am 04.04.2022 --unter fragwürdigen Umständen-- aufkaufte. 
 Die Auswertung der fehlenden Tage wird durch die Methode \textit{get\_density(df:pd.DataFrame)} ermöglicht, welche zunächst eine Liste aller Tage erstellt, die im jeweiligen Datensatz vorhanden sein sollten.
 Im Folgenden wird ein neuer Datensatz erstellt, der alle Tage, sowie den entsprechenden booleschen Wert (1 vorhanden / 0 fehlend) für jeden Tag des zu untersuchenden Datensatzes enthält.
-Dieser resultierende Datensatz kann nun einfach mit einem Eventplot skizziert werden und bietet die einfache Möglichkeit, den Prozentsatz der fehlenden Tage zu ermitteln.
+Dieser resultierende Datensatz kann nun mit einem Eventplot skizziert werden und bietet die Möglichkeit, den Prozentsatz der fehlenden Tage zu ermitteln.
 \begin{python}
 def get_density(df:pd.DataFrame):
     start_date = min(df["date"]).replace(hour=0, minute=0, second=0, microsecond=0)
@@ -88,8 +88,8 @@ def get_density(df:pd.DataFrame):
 
 
 \subsection{Data Preperation}
-Da die Datensätze schon sehr gut strukturiert sind, ist es nicht nötig eine erweiterte Data Preperation durchzuführen.
-Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Speichergröße zu verbessern, jedoch ist beides unerheblich und würde die Weiterentwicklung erheblich einschränken.
+Da die Datensätze schon sehr gut strukturiert sind, ist es nicht nötig eine erweiterte Data Preperation durchzuführn.
+Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Speichergröße zu verringern, jedoch ist beides unerheblich --und würde die Weiterentwicklung erheblich einschränken.--
 
 
 
@@ -100,9 +100,9 @@ Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Spe
 
 \subsubsection{Intervalselection}
 Die Methode \textit{check\_filter()} erkennt, ob in einem Text gewisse Schlüsselwörter aus einer Filter-Liste enthalten sind.
-Dies ermöglicht das Filtern der Posts anhand der evtl. im Post (Tweet) enthaltenen Schlüsselwörter (bspw.: ``Dogecoin'').
-Dabei kann in Abhängigkeit der Variable \textit{hit}, entweder nach dem vorhandenen sein (hit=True) oder dem Fehlen (hit=Flase) der Schlüsselwörter sortiert werden.
-Die Methode \textit{get\_interval} generiert einen Datensatz-Ausschnitt, der ausgehend von einem Startdatum die nächsten vorhandenen n Tage aus einem Stock-Datensatz enthält.
+Dies ermöglicht das Filtern der Posts anhand der eventuell im Post (Tweet) enthaltenen Schlüsselwörter (bspw.: ``Dogecoin'').
+Dabei kann in Abhängigkeit der Variable \textit{hit}, entweder nach dem Vorhandenensein (hit=True) oder dem Fehlen (hit=Flase) der Schlüsselwörter sortiert werden.
+Die Methode \textit{get\_interval} generiert einen Datensatz-Ausschnitt, der ausgehend von einem Startdatum die nächsten vorhandenen \textit{n} Tage aus einem Stock-Datensatz enthält.
 Die Anzahl der Tage wird durch den Parameter \textit{interval\_length} gegeben und beträgt standardmäßig den Wert 5 (eine Arbeitswoche).
 Es wird außerdem berücksichtigt, dass das Startdatum nicht im Stock-Datensatz enthalten ist.
 In diesem Fall nimmt das Unterprogramm das nächste vorhandene Datum.
@@ -118,10 +118,10 @@ So iteriert diese Schleife zunächst über alle Posts (Tweets), die im Datensatz
 Im Anschluss wird nun durch die Methode check\_filter überprüft, ob die aktuelle Zeile den Filteransprüchen gerecht wird.
 Trifft dies nicht zu, so wird diese Zeile übersprungen.
 Ansonsten wird das Datum aus der aktuellen Zeile ausgelesen.
-Im Folgenden wird nun überprüft, ob der aktuelle Tag schon im Datensatz ``influence'' enthalten ist, was passiert, wenn an einem Tag mehrere Posts vorliegen. Trifft dies zu, so wird dieser nur um den aktuellen Posttext ergänzt, sowie die Anzahl der Posts an diesem Tag inkrementiert.
+Im Folgenden wird nun überprüft, ob der aktuelle Tag schon im Datensatz ``influence'' enthalten ist. Was passiert, wenn an einem Tag mehrere Posts vorliegen? Trifft dies zu, so wird dieser nur um den aktuellen Posttext ergänzt, sowie die Anzahl der Posts an diesem Tag inkrementiert.
 Ist dieser Tag noch nicht im Datensatz ``influences'' enthalten, so wird für den aktuellen Tag zunächst das Intervall des Stock-Datensatzes bestimmt.
 Ist dies nicht möglich, so wird eine Warnung ausgegeben und die Schleif fährt fort.
-(Dies ist jedoch wie in 3.3.1 beschrieben zu vernachlässigen).
+(Dies ist jedoch wie in \ref{fig:Datendichte} beschrieben zu vernachlässigen).
 Wenn das Intervall erfolgreich erstellt wurde, werden nun alle Berechnungen auf das Intervall angewandt.
 Schlussendlich werden nun alle Werte unter diesem Tag in den Datensatz ``influences'' eingefügt.
 Hat die Schleife nun alle Posts abgearbeitet, kann nun dieser Datensatz zurückgegeben werden.
