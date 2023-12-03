@@ -33,22 +33,20 @@
 \newpage
 
 \section{Einleitung}
-Da gerade das digitale Zeitalter geprägt von dem Einfluss großer Social-Media-Plattformen ist, haben die Big Data Bandits beschlossen, im Ramen der Klausuraufgabe diese Extremen genauer zu betrachten.
+Da gerade das digitale Zeitalter geprägt von dem Einfluss großer Social-Media-Plattformen ist, haben die Big Data Bandits beschlossen, im Rahmen der Klausuraufgabe diese Extremen genauer zu betrachten.
 Unter dem Aspekt, dass Elon Musk wohl zu den populärsten, einflussreichsten und dominantesten Personen des öffentlichen Lebens zählt, nominiert ihn insbesondere sein ``einzigartiges'' Korrespondenzverhalten gepaart mit seinen wirtschaftlichen Interessen für eine genauere Untersuchung.
-Im folgenden Abstract findet eine Beantwortung und Beurteilung der Fragestellung im Rahmen der gestellten Aufgabe statt.
-Dafür analysieren wir die entsprechenden Datensätze mit einem für die Aufgabe entworfenem Python Script.
+Im folgenden Abstract findet eine Analyse und Beantwortung der Fragestellung im Rahmen der gestellten Klausuraufgabe statt.
+Dafür analysieren wir die entsprechenden Datensätze mit einem für diese Aufgabe entwickelten Python Script.
 Dieses kann, aufgrund seiner hohen Modularität, auch in der Zukunft zur Beantwortung ähnlicher Fragestellungen verwendet werden.
-Weitere Details bezüglich des Codes können der \href{https://github.com/alphaname007/BigDataBandits/blob/17e158a26d8d1cc538102ff44e4171b609965e95/code\_main.ipynb}{code\_main.ipynb} entnommen werden.
-Wir empfehlen zumindest einen kurzen Überflug über diese Datei, um die Transparenz sowie Sorgfalt der Analyse selbst beurteilen zu können.
-
-
+Weitere Details bezüglich des Codes können der \href{https://github.com/alphaname007/BigDataBandits/blob/19beac1a6b5469aed05b4a6c072883810df6aacd/code\_main.ipynb}{code\_main.ipynb} entnommen werden.
+Wir empfehlen zumindest einen kurzen Überflug über diese Datei, um die Transparenz und Sorgfalt der Analyse selbst beurteilen zu können.
 
 
 \section{Fragestellung}
-Die Fragestellung: ``Inwieweit nimmt Elon Musk durch sein Verhalten auf der Social-Media-Plattform X (ehem. Twitter) Einfluss auf den Kursverlauf von Tesla und Dogecoin?'' wurde in mehreren Iterationsschritten optimiert. 
-Dies ist insbesondere dem Zeitraum geschuldet, in welchem die Auswertung abgeschlossen sein musste.
+Die Fragestellung: ``Inwieweit nimmt Elon Musk durch sein Verhalten auf der Social-Media-Plattform X (ehem. Twitter) Einfluss auf den Kursverlauf von Tesla und Dogecoin?'' wurde in mehreren Iterationsschritten verbessert. 
+Dies war insbesondere dem Zeitraum geschuldet, in welchem die Auswertung abgeschlossen sein musste.
 Somit war es uns zwar nicht möglich, eine allgemeinere Fragestellung über den Einfluss von Privatpersonen auf den Aktienmarkt unter der Berücksichtigung verschiedener Personen zu beantworten.
-Jedoch konnten wir nun zusätzliche Legalitätsaspekte, sowie konkrete Empfehlungen für ein profitables Investieren als Privatperson mit in unsere Ausarbeitung nehmen.
+Jedoch konnten wir nun zusätzliche Legalitätsaspekte, sowie konkrete Empfehlungen für das profitable Investieren als Privatperson mit in unsere Ausarbeitung nehmen.
 
 
 
@@ -64,8 +62,8 @@ Für die Auswertung werden insbesondere die Zeilen ``date'' und ``raw\_close'' d
 
 \subsubsection{Datendichte}
 \begin{figure}[!htb]
-  	\includegraphics[width=.7\textwidth, height=100px]{./imgs/Dichte1.png}
-	\includegraphics[width=.3\textwidth, height=100px]{./imgs/Dichte2.png}
+  	\includegraphics[width=.7\textwidth, height=100px]{../imgs/Dichte1.png}
+	\includegraphics[width=.3\textwidth, height=100px]{../imgs/Dichte2.png}
  	\caption{Datendichte}
  	\label{fig:Datendichte}
 \end{figure}
@@ -73,7 +71,7 @@ Die erste Grafik zeigt die gesamte Zeitspanne (04.06.2010 - 12.10.2023) aller ge
 Dabei beschreibt der rote Anteil alle fehlenden Tage des jeweiligen Datensatzes.
 Die Regelmäßigkeit der fehlenden Daten im Tesla-Datensatz kann auf die geschlossenen Tage der Aktienbörse zurückgeführt werden;
 demzufolge, weist der Dogecoin-Datensatz auch keine fehlenden Datensätze auf, da die Kryptomärkte keiner Schließzeit unterliegen.
-Die prozentuale Anzahl der fehlenden Tage kann der zweiten Grafik entnommen werden.
+Der prozentuale Anzahl der fehlenden Tage kann der zweiten Grafik entnommen werden.
 Darüber hinaus lässt sich aus dem Schaubild die Aussage ableiten, dass das Korrespondenzverhalten von Elon Musk auf der Plattform X über die Zeit zunimmt.
 Zusammen mit der eineinhalbjährigen Pause nach seinem ersten Tweet am 04.06.2010 lässt dies die Vermutung offen, dass Musk erst nach und nach das Potenzial der Plattform erkannte, bis er diese schließlich am 04.04.2022 --unter fragwürdigen Umständen-- aufkaufte. 
 Die Auswertung der fehlenden Tage wird durch die Methode \textit{get\_density(df:pd.DataFrame)} ermöglicht, welche zunächst eine Liste aller Tage erstellt, die im jeweiligen Datensatz vorhanden sein sollten.
@@ -91,7 +89,7 @@ def get_density(df:pd.DataFrame):
 
 \subsection{Data Preperation}
 Da die Datensätze schon sehr gut strukturiert sind, ist es nicht nötig eine erweiterte Data Preperation durchzuführen.
-Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Speichergröße zu verringern, jedoch ist beides unerheblich --und würde die Weiterentwicklung erheblich einschränken.--
+Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Speichergröße zu verringern, jedoch ist beides unerheblich --und würde die Weiterentwicklung erheblich einschränken--.
 
 
 
@@ -100,34 +98,71 @@ Optional könnten die ungenutzten Spalten entfernt werden, um Rechenzeit und Spe
 
 \subsection{Hilfsfunktionen}
 
-\subsubsection{Intervalselection}
+\subsubsection{Intervallselection}
 Die Methode \textit{check\_filter()} erkennt, ob in einem Text gewisse Schlüsselwörter aus einer Filter-Liste enthalten sind.
-Dies ermöglicht das Filtern der Posts anhand der eventuell im Tweet enthaltenen Schlüsselwörter (bspw: ``Dogecoin'').
+Dies ermöglicht das Filtern der Posts anhand der eventuell im Post-Text enthaltenen Schlüsselwörter (bspw: ``Dogecoin'').
 Dabei kann in Abhängigkeit der Variable \textit{hit}, entweder nach dem Vorhandensein (hit=True) oder dem Fehlen (hit=Flase) der Schlüsselwörter sortiert werden.
-Die Methode \textit{get\_interval} generiert einen Datensatz-Ausschnitt, der ausgehend von einem Startdatum die nächsten vorhandenen \textit{n} Tage aus einem Stock-Datensatz enthält.
-Die Anzahl der Tage wird durch den Parameter \textit{interval\_length} gegeben und beträgt standardmäßig den Wert 5 sozusagen einer Arbeitswoche.
+Dies geschieht, indem die Methode je nach Gegebenheit den boolschen Wert Wahr oder Falsch annimmt.
+\\
+Die Methode \textit{get\_Intervall} generiert das zu betrachtende Datensatz-Intervall, welches ausgehend von einem Startdatum die nächsten vorhandenen \textit{n} Tage aus einem Stock-Datensatz enthält.
+Die Anzahl der Tage wird durch den Parameter \textit{Intervall\_length} gegeben und beträgt standardmäßig den Wert 3.
 Es wird außerdem berücksichtigt, dass das Startdatum nicht im Stock-Datensatz enthalten ist.
 In diesem Fall nimmt das Unterprogramm das nächste vorhandene Datum.
 Ausgehend von dem gefundenen Datum, werden der Start-Index sowie der End-Index des Datensatz-Ausschnittes berechnet.
+Dabei wird ebenfalls berücksichtigt, dass das End-Datum ggf. auch nicht mehr im Datensatz erhalten ist. Trifft dies zu, so kann kein Intervall erstellt werden und es wird None zurückgegeben.
+(Dieser Fall ist jedoch bei unseren Datensätzen nicht zwingend zu berücksichtigen, da die Stock-Datensätze deutlich aktueller sind, als der Datensatz der Posts (Tweets), aus dem das Startdatum stammt.)
 
 \subsubsection{Kursverlauf}
+Die folgende Hilfsmethode \textit{get\_Trend} ist ein wichtiges Kernstück der Analyse und wird dazu verwendet, die Änderung des Aktienkurses im gegeben Intervall zu analysieren.
+Dafür betrachten wir die Spalte "close", die dem täglichen Abschlusswert der Aktie entspricht.
+Im Folgenden ermittelt die Methode mithilfe einer linearen Regression eine Gerade, welche das Wachstum der Aktie im gegebenen Zeitraum repräsentiert.
+Anschließend werden mit diesem Modell die erwarteten Wert der Aktie für den ersten bzw. letzten Tag des zu betrachtenden Intervalls berechnet.
+Zwischen diesen resultierenden Werten, kann nun der prozentuale Unterschied kalkuliert werden.
+Dies erfolgt nach der Rechenvorschrift $ (day_{n} - day_{0}) / |day_{0}| * 100 $ wobei $day_{0}$ dem ersten Tag des Intervalls und $day_{n}$ dem letzten Tag des Intervalls entspricht. 
+Dabei hat dieses Verfahren den Vorteil, dass alle Werte des Intervalls gleichermaßen berücksichtigt werden.
+\begin{python}
+def get_trend(stock_part:pd.DataFrame):
+    colses_of_Intervall:list = stock_part["close"].tolist()
+    
+    x = np.array(range(len(colses_of_Intervall))).reshape(-1, 1)
+    y = np.array(colses_of_Intervall)
+
+    model = LinearRegression().fit(x, y)
+
+    x_first = np.array([0]).reshape(-1, 1)
+    x_last = np.array([len(colses_of_Intervall) - 1]).reshape(-1, 1)
+
+    y_first = model.predict(x_first)[0]
+    y_last = model.predict(x_last)[0]
+
+    change_percentage = round((y_last - y_first) / abs(y_first), 4) * 100
+
+    return [change_percentage, model]
+\end{python}
+Die Hilfsmethode \textit{get\_Absolute} kann vernachlässigt werden, da sich unsere Analyse auschließlich auf den Trend-Verlauf bezieht.
+Dieser ist Aufgrund der Berücksichtigung aller Werte des Intervalls weniger anfällig für extreme Auseneinflüsse und unerwartete Schwankungen und eignet sich dadurch besser zur Beantwortung der Fragestellung.
 
 
 \subsection{Hauptschleife}
-Die Hauptfunktion umfasst die grundlegende Schleife zur Auswertung der Datensätze in Bezug auf die Fragestellung.
-Dafür wird ein neuer Datensatz ``influence'' erstellt, der für jeden Tag, an dem ein Post mit den entsprechenden Filterkriterien verfasst wurde, das Datum, eine Liste aller Posts, die Anzahl dieser Posts sowie den prozentualen Unterschied der dafür vorgesehenen Hilfsfunktionen enthält.
-So iteriert diese Schleife zunächst über alle Tweets, die im Datensatz Posts enthalten sind.
-Im Anschluss wird nun durch die Methode check\_filter überprüft, ob die aktuelle Zeile den Filteransprüchen gerecht wird.
-Trifft dies nicht zu, so wird diese Zeile übersprungen.
+Die Hauptschleife umfasst die grundlegende Funktionalität zur Auswertung der Datensätze in Bezug auf die Fragestellung.
+Aufgrund der hohen Komplexität des Vorgangs konnte nicht auf eine Funktionskombination bestehender APIs zurückgegriffen werden.
+Somit musste die Funktion von Grund auf neu entwickelt werden.
+Dafür wird ein neuer Datensatz \textit{influence} erstellt, welcher alle Tage, an denen ein Post mit den entsprechenden Filterkriterien verfasst wurde, umfasst.
+Für jeden dieser Tage wird das Datum, eine Liste aller Posts, die Anzahl dieser Posts, sowie der in \ref{Kursverlauf} errechnete Kursverlauf aufgezeichnet.
+So iteriert diese Schleife zunächst über alle Posts (Tweets), die im Datensatz "Posts" enthalten sind.
+Im Anschluss wird nun durch die Methode \textit{check_filter} überprüft, ob die aktuelle Zeile den Filtern gerecht wird.
+Trifft dies nicht zu, so wird diese Zeile direkt übersprungen.
 Ansonsten wird das Datum aus der aktuellen Zeile ausgelesen.
-Im Folgenden wird nun überprüft, ob der aktuelle Tag schon im Datensatz ``influence'' enthalten ist. Was passiert, wenn an einem Tag mehrere Posts vorliegen? Trifft dies zu, so wird dieser nur um den aktuellen Posttext ergänzt, sowie die Anzahl der Posts an diesem Tag inkrementiert.
+Im Folgenden wird überprüft, ob der aktuelle Tag schon im Datensatz ``influence'' enthalten ist, was zutrifft, wenn an einem Tag mehrere Posts vorliegen.
+Ist dies der Fall, so wird dieser nur um den aktuellen Posttext ergänzt, sowie die Anzahl der Posts an diesem Tag inkrementiert.
 Ist dieser Tag noch nicht im Datensatz ``influences'' enthalten, so wird für den aktuellen Tag zunächst das Intervall des Stock-Datensatzes bestimmt.
-Ist dies nicht möglich, so wird eine Warnung ausgegeben und die Schleif fährt fort.
-(Dies ist jedoch wie in \ref{fig:Datendichte} beschrieben zu vernachlässigen).
-Wenn das Intervall erfolgreich erstellt wurde, werden nun alle Berechnungen auf das Intervall angewandt.
-Schlussendlich werden die Werte unter diesem Tag in den Datensatz ``influences'' eingefügt.
+Ist dies nicht möglich, weil ggf. Daten fehlen, wird eine Warnung ausgegeben und die Schleife fährt fort.
+(Dies ist jedoch wie in \ref{Intervallselektion} beschrieben zu vernachlässigen).
+Wenn das Intervall erfolgreich erstellt wurde, werden nun alle Berechnungen der beiden Hilfsfunktionen auf dieses angewandt.
+Schlussendlich werden alle Werte unter diesem Tag in den Datensatz "influences" eingefügt.
 Hat die Schleife alle Posts abgearbeitet, kann dieser Datensatz zurückgegeben werden.
-Zudem wird der prozentuale Anteil der im ``influence'' enthaltenen Posts von allen Posts ermittelt und zurückgegeben.
+Zudem wird der prozentuale Anteil der im "influence" enthaltenen Posts von allen Posts ermittelt und mit zurückgegeben.
+
 \begin{python}
 def get_influence(stock:pd.DataFrame, posts:pd.DataFrame=Posts, filter_list:list=[], hit:bool=False,):
     # find a common start date
@@ -146,12 +181,12 @@ def get_influence(stock:pd.DataFrame, posts:pd.DataFrame=Posts, filter_list:list
         else:
             date = pd.to_datetime(post['date']).normalize()
             if not date == old_date:
-                interval = get_interval(date, stock)
-                if interval is None:
+                Intervall = get_Intervall(date, stock)
+                if Intervall is None:
                     print("No Data Available")
                     continue
-                cp_trend, model = get_trend(interval)
-                cp_absolute = get_absolute(interval)
+                cp_trend, model = get_trend(Intervall)
+                cp_absolute = get_absolute(Intervall)
                 influence.loc[j] = [date] + [[post['text']]] + [0] + [cp_trend] + [cp_absolute]
                 old_date = date
                 j += 1
@@ -162,7 +197,9 @@ def get_influence(stock:pd.DataFrame, posts:pd.DataFrame=Posts, filter_list:list
 \end{python}
 
 \subsection{Erzeugung}
-Filter.
+Im Folgenden können nun beliebig viele ``Influence''-Datensätze für eine Analyse erstellt werden.
+Dafür wird eine Filter-Liste mit den entsprechenden Schlüsselwörtern der Funktion *get_influence* übergeben.
+Außerdem kann optional das zu betrachtende Zeitintervall beliebig angepasst werden.
 
 
 \newpage
@@ -172,7 +209,7 @@ Filter.
 \subsubsection{Verteilung}
 \begin{figure}[h]
   	\centering
-  	\includegraphics[width=\textwidth]{./imgs/Verteilung.png}
+  	\includegraphics[width=\textwidth]{../imgs/Verteilung.png}
  	\caption{Verteilung}
  	\label{fig:Verteilung}
 \end{figure}
@@ -186,9 +223,9 @@ Dies könnte daran liegen, dass Dogecoin von Elon Musk mehr als eine Art Neben- 
 
 \subsubsection{Verlauf}
 \begin{figure}[!htb]
-  	\includegraphics[width=\textwidth, center]{./imgs/Verlauf.png}
- 	\caption{Datendichte}
- 	\label{fig:Datendichte}
+  	\includegraphics[width=\textwidth, center]{../imgs/Verlauf.png}
+ 	\caption{Verlauf}
+ 	\label{fig:Verlauf}
 \end{figure}
 Dieses Diagramm zeigt den Tag (x-Achse), sowie die Anzahl der Posts an diesem Tag (y-Achse). Auch hier sieht man die in \ref{sec:Dataunderstanding} aufgeworfene These, dass das Korrespondenzverhalten von Elon Musk im Verlauf der Zeit zunimmt.
 Zudem wird diese Vermutung nun auch durch die Anzahl der Posts an einem Tag gestützt.
@@ -199,7 +236,7 @@ Während im Sommer 2019 ein Großteil seiner Posts die Schlüsselwörter von Tes
 \subsubsection{Zusammenhänge}
 \begin{figure}[!htb]
 	\begin{minipage}{0.4\textwidth}
-    		\includegraphics[width=\textwidth]{./imgs/Korrelation.png}
+    		\includegraphics[width=\textwidth]{../imgs/Korrelation.png}
     		\caption{Korrelation}
     		\label{fig:Korrelation}
   	\end{minipage}
@@ -226,20 +263,31 @@ Während im Sommer 2019 ein Großteil seiner Posts die Schlüsselwörter von Tes
 
 
 
-\subsection{Trend}
-\subsubsection{Verlauf}
+\subsection{Verlauf}
+\subsubsection{i=3}
 \begin{figure}[!htb]
-  	\includegraphics[width=\textwidth, center]{./imgs/Trend.png}
- 	\caption{Trend}
- 	\label{fig:Trend}
+  	\includegraphics[width=\textwidth, center]{../imgs/Trendi3.png}
+ 	\caption{Trend i=3}
+ 	\label{fig:Trendi3}
 \end{figure}
 Die analysierten Diagramme zeigen den Einfluss von Elon Musks Posts auf die Kursentwicklung von Dogecoin und Tesla. Bezüglich Dogecoin fällt auf, dass Musks Tweets nur geringfügige Auswirkungen zu haben scheinen, da die prozentualen Veränderungen im Vergleich zu den Trends ohne das Stichwort ``Doge'' oft relativ gering sind. Es gibt sogar Situationen, in denen die Trends ohne Musks Tweets deutlich stärkere Veränderungen aufweisen als mit.
 Im Fall von Tesla hingegen ist erkennbar, dass Musks Tweets einen deutlich stärkeren Einfluss auf den Aktienverlauf haben. Insbesondere ab 2018 ist eine Zunahme seiner Tweets zu beobachten. Die Diagramme zeigen Spitzen, bei denen ein Tweet den Trend sowohl positiv als auch negativ beeinflusst. Dennoch verläuft der Trend größtenteils ähnlich, ob mit oder ohne einen entsprechenden Tweet. Dies legt nahe, dass Musk zwar in der Lage ist, den Aktienkurs von Tesla durch seine Tweets zu beeinflussen, aber dass auch andere, uns unbekannte Faktoren eine bedeutende Rolle spielen.
 In den meisten Fällen scheint sich die Aktie so zu verhalten, als ob Musks Tweets den Markt nicht wesentlich beeinflussen würden. Dennoch gibt es bestimmte Punkte, an denen Musk in der Lage ist, den Trend der Aktie stark zu beeinflussen. Dabei bleibt jedoch unklar, ob diese Veränderungen gezielt geplant sind oder eher Zufälle sind.
 
+\subsubsection{i=5}
+\begin{figure}[!htb]
+  	\includegraphics[width=\textwidth, center]{../imgs/Trendi5.png}
+ 	\caption{Trend i=5}
+ 	\label{fig:Trendi5}
+\end{figure}
+Die analysierten Diagramme zeigen den Einfluss von Elon Musks Posts auf die Kursentwicklung von Dogecoin und Tesla. Bezüglich Dogecoin fällt auf, dass Musks Tweets nur geringfügige Auswirkungen zu haben scheinen, da die prozentualen Veränderungen im Vergleich zu den Trends ohne das Stichwort ``Doge'' oft relativ gering sind. Es gibt sogar Situationen, in denen die Trends ohne Musks Tweets deutlich stärkere Veränderungen aufweisen als mit.
+Im Fall von Tesla hingegen ist erkennbar, dass Musks Tweets einen deutlich stärkeren Einfluss auf den Aktienverlauf haben. Insbesondere ab 2018 ist eine Zunahme seiner Tweets zu beobachten. Die Diagramme zeigen Spitzen, bei denen ein Tweet den Trend sowohl positiv als auch negativ beeinflusst. Dennoch verläuft der Trend größtenteils ähnlich, ob mit oder ohne einen entsprechenden Tweet. Dies legt nahe, dass Musk zwar in der Lage ist, den Aktienkurs von Tesla durch seine Tweets zu beeinflussen, aber dass auch andere, uns unbekannte Faktoren eine bedeutende Rolle spielen.
+In den meisten Fällen scheint sich die Aktie so zu verhalten, als ob Musks Tweets den Markt nicht wesentlich beeinflussen würden. Dennoch gibt es bestimmte Punkte, an denen Musk in der Lage ist, den Trend der Aktie stark zu beeinflussen. Dabei bleibt jedoch unklar, ob diese Veränderungen gezielt geplant sind oder eher Zufälle sind.
+
+
 \subsubsection{Durchschnitt}
 \begin{figure}[!htb]
-  	\includegraphics[width=\textwidth, center]{./imgs/Trend_Durchschnitt.png}
+  	\includegraphics[width=\textwidth, center]{../imgs/Trend_Durchschnitt.png}
  	\caption{Trend Durchschnitt}
  	\label{fig:Trend Durchschnitt}
 \end{figure}
@@ -249,29 +297,7 @@ Daraus kann man hier ziehen, dass Elon Musk durch die Verwendung des Wortes ``Do
 In der rechten Grafik wird auf die Tesla Aktie geschaut, hier wird nach Verwendung des Wortes ``Tesla'' in seinen Tweets geschaut. Hier liegt der Wert ohne die Verwendung des Wortes bei 1.01 und wenn er es verwendet bei 1.02.
 Dadurch kann man bei der rechten Grafik ziehen, dass es bei der Tesla Aktie keine wirklichen Auswirkungen auf den allgemeinen Trend der Aktie gab.
 
-
-\subsection{Absolute}
-\subsubsection{Verlauf}
-\begin{figure}[!htb]
-  	\includegraphics[width=\textwidth, center]{./imgs/Absolut.png}
- 	\caption{Absolut}
- 	\label{fig:Absolut}
-\end{figure}
-Nun haben wir die absoluten Werte in \% von Dogecoin und Tesla nach eine Post von Musk. Bei dem ersten Diagramm erkennt man, dass die Tweets über Dogecoin sogar weniger Einfluss haben als, wenn Musk einfach nur so twitterte, daraus lässt sich schließen, dass bei Dogecoin, Musks Einfluss so gering ist, dass er praktisch gar nicht vorhanden ist, oder zumindest irrelevant ist. Bei Tesla jedoch gibt es einige Punkte bei denen sich die Aktie stark veränderte, --aufgrund-- bzw. nach einem Tweet von Musk. Jedoch sieht man auch das die Aktie auch ohne einen solchen Tweet sich oft stark veränderte, und somit kann man sagen das Musk zwar einen gewissen Einfluss hat, aber diesen nicht oft nutzt. Das könnte z. B. daran liegen, dass es eventuell illegal ist, oder die Menschen sonst erkennen würden, wann er manipuliert und das dann für sich ausnutzen würden.
-
-
-\subsubsection{Durchschnitt}
-\begin{figure}[!htb]
-  	\includegraphics[width=\textwidth, center]{./imgs/Absolut_Durchschnitt.png}
- 	\caption{Absolut Durchschnitt}
- 	\label{fig:Absolut Durchschnitt}
-\end{figure}
-In dieser Grafik schauen wir uns die Auswirkung auf die absoluten Werte der beiden Aktien an, hier kann man direkt auf den ersten Blick einen etwas größeren Unterschied erkennen.
-Bei Dogecoin ist der absolute Wert bei 2.03, wenn Elon Musk das Wort nicht in seinen Tweets erwähnt hat, aber wenn er es benutzt hat, steigt der absolute Wert auf 2.35. Hieraus lässt sich schließen, dass er mit Sicherheit etwas Einfluss darauf hat, auch wenn es nicht viel ist.
-Genau dasselbe mit der Tesla Aktie. Hier liegt der absolute Wert bei 1.08, wenn er es in seinen Tweets nicht erwähnt, aber wenn es erwähnt wird, steigt der absolute Wert auf 1.63 an. Hier ist sein Einfluss sogar noch etwas stärker als bei Dogecoin.
-
 \section{Gesamtbewertung / Erwartung}
-
 \subsection{Die Legalität}
 Die Legalität und die Auswirkung von Elon Musks Tweets auf den Aktienmarkt sind ein kompliziertes Thema. Normalerweise müssen Äußerungen insbesondere von einflussreichen Personen, Managern und Geschäftsführern von börsenorientierten Unternehmen in dem Rahmen der geltenden Gesetze und Vorschriften erfolgen.
 Die SEC (Securities and Exchange Commission) hat spezifische Regeln für Offenlegungen durch
@@ -279,6 +305,10 @@ Direktoren börsennotierter Unternehmen. Der Zweck dieser Regeln besteht darin, 
 dass relevante Informationen fair und gleichzeitig für alle Marktteilnehmer zugänglich sind. Musk und Tesla standen in der Vergangenheit unter Beobachtung der SEC, insbesondere aufgrund von Elon Musks Tweets über Tesla. Einige von Musks Tweets wurden als potenzielle Verstöße gegen die SEC-Regeln angesehen, was zu Rechtsstreitigkeiten und Vergleichen mit der SEC führte. Es ist wichtig zu beachten, dass die Rechtslage in solchen Fällen weitgehend von den konkreten Umständen und den
 geltenden Gesetzen abhängt. Musk und sein Unternehmen müssen sich noch mit der öffentlichen
 Kommunikation und ihren Auswirkungen auf den Aktienmarkt befassen.
+
+\subsection{Investitionsempfehlungen}
+
+
 
 \section{Fazit}
 Anhand der Erkenntnisse, die wir aus den jeweiligen Auswertungen erlangt haben, können wir die genaue Fragestellung beantworten. Bezüglich der Legalität der Einflussnahme von Elon Musk auf den Aktienmarkt kann man sagen, dass er sich in einer Grauzone bewegt. Grundsätzlich ist es nur im Rahmen der Gesetze möglich, für Personen, die sehr viel Einfluss haben, Äußerungen zu tätigen. Besonders auf Social-Media-Plattformen wie X (ehemals Twitter) ist eine Einflussnahme auf den Aktienmarkt gesetzlich nicht erlaubt. Elon Musk ist eine dieser einflussreichen Personen und daher hat auch er die Pflicht, sich an diese Vorschriften zu halten, jedoch nutzt er den gegebenen Spielraum hin und wieder aus.
