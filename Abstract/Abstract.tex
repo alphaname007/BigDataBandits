@@ -158,14 +158,14 @@ Trifft dies nicht zu, so wird diese Zeile direkt übersprungen.
 Ansonsten wird das Datum aus der aktuellen Zeile ausgelesen.
 Im Folgenden wird überprüft, ob der aktuelle Tag schon im Datensatz \textit{influence} enthalten ist, was zutrifft, wenn an einem Tag mehrere Posts vorliegen.
 Ist dies der Fall, so wird dieser nur um den aktuellen Posttext ergänzt, sowie die Anzahl der Posts an diesem Tag inkrementiert.
-Ist dieser Tag noch nicht im Datensatz \textit{influences} enthalten, so wird für den aktuellen Tag zunächst das Intervall des Stock-Datensatzes bestimmt.
+Ist dieser Tag noch nicht im Datensatz \textit{influence} enthalten, so wird für den aktuellen Tag zunächst das Intervall des Stock-Datensatzes bestimmt.
 Ist dies nicht möglich, weil ggf. Daten fehlen, wird eine Warnung ausgegeben und die Schleife fährt fort.
 Dies ist jedoch wie in \ref{Intervallselektion} beschrieben zu vernachlässigen.
 Wenn das Intervall erfolgreich erstellt wurde, werden nun alle Berechnungen der beiden Hilfsfunktionen auf dieses angewandt.
-Schlussendlich werden alle Werte unter diesem Tag in den Datensatz \textit{influences} eingefügt.
+Schlussendlich werden alle Werte unter diesem Tag in den Datensatz \textit{influence} eingefügt.
 Hat die Schleife alle Posts abgearbeitet, kann dieser Datensatz zurückgegeben werden.
 Zudem wird der prozentuale Anteil der im \textit{influence} enthaltenen Posts von allen Posts ermittelt und mit zurückgegeben.
-
+\newpage
 \begin{python}
 def get_influence(stock:pd.DataFrame, posts:pd.DataFrame=Posts, filter_list:list=[], hit:bool=False,):
     # find a common start date
@@ -198,6 +198,8 @@ def get_influence(stock:pd.DataFrame, posts:pd.DataFrame=Posts, filter_list:list
                 influence.loc[j-1, 'count_posts'] += 1
     return [influence, j/i*100]
 \end{python}
+
+
 
 \subsection{Erzeugung} \label{Erzeugung}
 Im Folgenden können nun beliebig viele Influence-Datensätze für eine Analyse erstellt werden.
@@ -240,14 +242,17 @@ Während im Sommer 2019 ein Großteil seiner Posts die Schlüsselwörter von Tes
 
 \subsubsection{Zusammenhänge} \label{Zusammenhänge}
 \begin{figure}[!htb]
-	\begin{minipage}{0.4\textwidth}
-    		\includegraphics[width=\textwidth]{../imgs/Korrelation.png}
+	
+
+    		\includegraphics[width=0.5\textwidth, center]{../imgs/Korrelation.png}
     		\caption{Korrelation}
     		\label{fig:Korrelation}
-  	\end{minipage}
-  	\hfill
-	\begin{minipage}{0.55\textwidth} 
-	Der wichtigste Aspekt, der der Korrelationstabelle des Einfluss-Datensatzes entnommen werden kann, ist die Unabhängigkeit zwischen der Spalte \textit{count\_posts} und den Werten \textit{trend} und \textit{absolute}.
+
+	
+		
+\end{figure}
+
+Der wichtigste Aspekt, der der Korrelationstabelle des Einfluss-Datensatzes entnommen werden kann, ist die Unabhängigkeit zwischen der Spalte \textit{count\_posts} und den Werten \textit{trend} und \textit{absolute}.
 	Dies zeigt, dass die Anzahl der Posts (Tweets) an einem Tag keinen Einfluss auf den Verlauf der beiden Wertpapiere hat.
 	Die Korrelationstabelle wurde unter Verwendung der Bibliothek Seaborn aus der Vereinigung der Schlüsselwort freien Einfluss-Datensatz erstellt.
 	\begin{python}
@@ -260,9 +265,6 @@ Während im Sommer 2019 ein Großteil seiner Posts die Schlüsselwörter von Tes
 	sns.heatmap(influences_corr, annot=True, fmt=".2f")
 	plt.show()
 	\end{python}
-		
-	\end{minipage}
-\end{figure}
 
 \newpage
 
@@ -309,7 +311,7 @@ Anhand unserer Auswertungen und Grafiken kann man sehen, dass Dogecoin tendenzie
 
 
 \section{Fazit} \label{Fazit}
-Anhand der Erkenntnisse, die wir aus den jeweiligen Auswertungen erlangt haben, können wir die genaue Fragestellung beantworten. Bezüglich der Legalität der Einflussnahme von Elon Musk auf den Aktienmarkt kann man sagen, dass er sich in einer Grauzone bewegt. Grundsätzlich ist es nur im Rahmen der Gesetze möglich, für Personen, die sehr viel Einfluss haben, Äußerungen zu tätigen. Besonders auf Social-Media-Plattformen wie X (ehemals Twitter) ist eine Einflussnahme auf den Aktienmarkt gesetzlich nicht erlaubt. Elon Musk ist eine dieser einflussreichen Personen und daher hat auch er die Pflicht, sich an diese Vorschriften zu halten, jedoch nutzt er den gegebenen Spielraum hin und wieder aus.
+Anhand der Erkenntnisse, die wir aus den jeweiligen Auswertungen erlangt haben, können wir die genaue Fragestellung beantworten. Bezüglich der Legalität der Einflussnahme von Elon Musk auf den Aktienmarkt kann man sagen, dass er sich an der Grenze des rechtlichen Rahmens bewegt und auch schon in manchen Fällen über diese Grenze hinweg gegangen ist. Grundsätzlich ist es nur im Rahmen der Gesetze möglich, für Personen, die sehr viel Einfluss haben, Äußerungen zu tätigen. Besonders auf Social-Media-Plattformen wie X (ehemals Twitter) ist eine Einflussnahme auf den Aktienmarkt gesetzlich nicht erlaubt. Elon Musk ist eine dieser einflussreichen Personen und daher hat auch er die Pflicht, sich an diese Vorschriften zu halten.
 Welchen Einfluss seine Äußerungen auf Social Media schlussendlich wirklich haben, konnten wir ebenfalls herausfinden. Anhand unserer Beobachtungen, dass der Trend und die absoluten Werte der Aktie Tesla sich immer wieder durch Musk beeinflussen lassen, schließen wir, dass Musk durchaus den Kursverlauf von Tesla relativ stark beeinflusst. Jedoch nur meist gemäßigt und nur selten stark. Dieses Verhalten lässt sich mit der Legalität begründen, denn so überschreitet Musk nicht die Grenze.
 Auf Dogecoin hat Musk zwar weniger Einfluss, aber auch hier übt er diesen immer wieder aus. Um als Privatperson auf solch einen Einfluss besser vorbereitet zu sein, könnte man nun das Programm noch so erweitern, dass es eine Zukunftsvorhersage berechnet und ausgibt. Aufgrund dieser Vorhersagen kann man dann seine Investments besser planen und durchführen. Aus zeitlichen Gründen war uns nur die Auswertung möglich, wie der Trend sich allgemein verändert, wenn Musk etwas mit Tesla oder Dogecoin postet. Aufgrund dieser Auswertung kann man nicht automatisch nach einem neuen Post sagen, wie der Kurs sich nun verhalten wird. Eine Programmerweiterung könnte, wenn man genauer anschaut, was gepostet wird, dieses Problem beheben und fundierte Vorhersagen erstellen.
 \end{document}
